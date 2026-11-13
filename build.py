@@ -24,21 +24,18 @@ home = re.sub(r'<div class="hero-shot">.*?</div>', '<div class="hero-shot"><div 
 js.append(r'''
 // ---- Accueil intégré ----
 const home = document.getElementById('home');
-const grid = document.getElementById('grid');
-grid.innerHTML = TEMPLATES.map(t => `
-  <a class="card" href="#" data-open="${t.id}">
-    <div class="thumb"><span>${t.emoji}</span></div>
-    <div class="meta"><h3>${t.emoji} ${esc(t.name)}</h3><p>${esc(t.desc)}</p>
-      <div class="tags">${t.tags.map(x => `<span>${esc(x)}</span>`).join('')}</div></div>
-  </a>`).join('');
+home.addEventListener('pointermove', e => {
+  home.querySelectorAll('.glass').forEach(g => { const r = g.getBoundingClientRect(); g.style.setProperty('--mx', `${e.clientX - r.left}px`); g.style.setProperty('--my', `${e.clientY - r.top}px`); });
+}, { passive: true });
 let heroInst = null;
 function showHome(on) {
   home.hidden = !on;
   document.body.classList.toggle('at-home', on);
   if (on && !heroInst) {
     const m = document.getElementById('heroMini');
+    m.innerHTML = '';
     heroInst = T_bank.mount(m, Object.fromEntries(T_bank.schema.map(f => [f.key, f.default])));
-    const fit = () => m.style.transform = `scale(${m.parentElement.clientWidth / 1280})`;
+    const fit = () => m.style.transform = `scale(${m.parentElement.clientWidth / 420})`;
     new ResizeObserver(fit).observe(m.parentElement); fit();
   }
   if (!on && heroInst) { heroInst.destroy(); heroInst = null; document.getElementById('heroMini').innerHTML = ''; }
@@ -47,7 +44,7 @@ document.addEventListener('click', e => {
   const a = e.target.closest('[data-open]'); if (!a) return;
   e.preventDefault();
   const sel = document.getElementById('tpl'); sel.value = a.dataset.open; sel.dispatchEvent(new Event('change'));
-  document.body.classList.remove('nopanel'); showHome(false); scrollTo(0, 0);
+  document.body.classList.remove('nopanel'); showHome(false);
 });
 document.querySelectorAll('[data-soon]').forEach(a => a.onclick = e => { e.preventDefault(); alert('Paiement bientôt disponible !'); });
 document.querySelector('.p-head .logo').onclick = e => { e.preventDefault(); showHome(true); };
@@ -65,21 +62,48 @@ app = read('app.html')
 body = app[app.index('<body>') + 6:app.index('<script')]
 body = body.replace('href="index.html" class="logo"', 'href="#" class="logo"')
 
-css_site = read('css/site.css').replace('body{', '#home{').replace('html{scroll-behavior:smooth}', '')
+def scope_css(css, pre='#home'):
+    """Préfixe chaque sélecteur de la landing par #home pour ne pas toucher l'appli."""
+    out, i = [], 0
+    while i < len(css):
+        j = css.find('{', i)
+        if j < 0: out.append(css[i:]); break
+        sel = css[i:j].strip()
+        depth, k = 1, j + 1
+        while depth:
+            depth += {'{': 1, '}': -1}.get(css[k], 0); k += 1
+        block = css[j + 1:k - 1]
+        if sel.startswith('@media') or sel.startswith('@supports'):
+            out.append(f'{sel}{{{scope_css(block, pre)}}}')
+        elif sel.startswith('@'):
+            out.append(f'{sel}{{{block}}}')
+        else:
+            parts = []
+            for x in sel.split(','):
+                x = x.strip()
+                if x in ('html',): continue
+                if x == ':root': parts.append(f':where({pre})'); continue
+                if x.startswith('body'): parts.append(f':where({pre})' + x[4:]); continue
+                parts.append(f':where({pre}) {x}')
+            if parts: out.append(f"{','.join(parts)}{{{block}}}")
+        i = k
+    return '\n'.join(out)
+
+css_site = scope_css(read('css/site.css'))
 extra_css = '''
 #home{position:fixed;inset:0;overflow:auto;z-index:500}
 #home[hidden]{display:none}
 .at-home #open,.at-home #wm{display:none}
-.thumb{display:grid;place-items:center;background:radial-gradient(circle at 30% 30%,#2a2050,#0b0c12)}
-.thumb>span{font-size:64px}
-.mini{text-align:left;position:absolute;top:0;left:0;width:1280px;height:720px;transform-origin:0 0;pointer-events:none}
+.mini{text-align:left}
+.mini .bk{background:transparent}
+.mini .bk-phone{width:420px;height:860px;box-shadow:none;border-radius:46px}
 '''
 out = f'''<!doctype html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PropDash</title>
+<title>Novabank Simulator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>

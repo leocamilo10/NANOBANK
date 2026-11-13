@@ -3,63 +3,108 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PropDash</title>
-<meta name="description" content="Simulateur d’appli bancaire : solde, opérations et virements modifiables, navigable comme une vraie appli. Pour tes blagues et ton contenu sur les réseaux sociaux.">
+<title>Novabank Simulator</title>
+<meta name="description" content="Novabank, la néobanque qui n’existe pas : une appli bancaire fictive plus vraie que nature pour tes blagues, tes sketchs et ton contenu sur les réseaux sociaux.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
-<nav class="wrap nav"><a class="logo" href="#">◧ PropDash</a>
-  <div><a href="#ecrans">Novabank</a><a href="#tarifs">Tarifs</a><a href="#faq">FAQ</a><a class="btn sm" href="app.html">Ouvrir l’éditeur</a></div></nav>
+<nav class="nav glass liquid">
+  <a class="brand" href="#"><svg width="26" height="26" viewBox="0 0 48 48"><use href="#nb-logo"/></svg>Novabank<em>Simulator</em></a>
+  <div class="links"><a href="#usages">Usages</a><a href="#fonctions">Fonctions</a><a href="#tarifs">Tarifs</a><a href="#faq">FAQ</a></div>
+  <a class="btn sm" href="app.html#t=bank">Ouvrir l’appli</a>
+</nav>
 
-<header class="wrap hero">
-  <p class="nb-badge"><svg width="28" height="28" viewBox="0 0 48 48" style="vertical-align:-7px;margin-right:8px"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b5bf7"/><stop offset="1" stop-color="#ff4fd8"/></linearGradient></defs><rect width="48" height="48" rx="14" fill="url(#lg)"/><path d="M14 35V15l19 19V15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 6l1.5 4.5L44 12l-4.5 1.5L38 18l-1.5-4.5L32 12l4.5-1.5z" fill="#fff"/></svg><b>Novabank</b><span>la néobanque qui n’existe pas</span></p>
-  <h1>Fais vivre tes idées<br><span>avec Novabank.</span></h1>
-  <p class="lead"><b>Novabank</b> est une néobanque <b>100 % fictive</b> : une appli plus vraie que nature, avec solde, opérations, bénéficiaires et virements modifiables, navigable au doigt en mode téléphone. Pour tes blagues, tes sketchs et ton contenu sur les réseaux sociaux.</p>
-  <div class="cta"><a class="btn" href="app.html#t=bank">Essayer gratuitement</a><a class="btn ghost" href="#ecrans">Découvrir Novabank</a></div>
-  <div class="hero-shot"><iframe src="app.html#t=bank&embed=1" title="Aperçu" loading="lazy" tabindex="-1"></iframe></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="liquid" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="7" result="n"/>
+    <feGaussianBlur in="n" stdDeviation="2" result="nb"/>
+    <feDisplacementMap in="SourceGraphic" in2="nb" scale="38" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <symbol id="nb-logo" viewBox="0 0 48 48"><defs><linearGradient id="lgl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b5bf7"/><stop offset="1" stop-color="#ff4fd8"/></linearGradient></defs><rect width="48" height="48" rx="14" fill="url(#lgl)"/><path d="M14 35V15l19 19V15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 6l1.5 4.5L44 12l-4.5 1.5L38 18l-1.5-4.5L32 12l4.5-1.5z" fill="#fff"/></symbol>
+</svg>
+<div class="bg" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i><i class="b4"></i><span class="grain"></span></div>
+
+<header class="hero wrap">
+  <div class="hero-txt">
+    <p class="chip glass"><span class="dot"></span>La néobanque qui n’existe pas</p>
+    <h1>Fais vivre<br>tes idées avec<br><span class="grad">Novabank.</span></h1>
+    <p class="lead">Une appli bancaire <b>100 % fictive</b> et plus vraie que nature : solde, opérations, bénéficiaires et virements modifiables, navigable au doigt. Pour tes blagues, tes sketchs et ton contenu sur les réseaux sociaux.</p>
+    <div class="cta"><a class="btn" href="app.html#t=bank">Créer mon compte fictif</a><a class="btn ghost glass" href="#fonctions">Découvrir</a></div>
+    <ul class="stats"><li><b>0 €</b><span>pour commencer</span></li><li><b>30 s</b><span>pour personnaliser</span></li><li><b>100 %</b><span>fictif</span></li></ul>
+  </div>
+  <div class="hero-vis">
+    <div class="halo"></div>
+    <div class="hero-shot"><iframe src="app.html#t=bank&embed=1" title="Aperçu Novabank" loading="lazy" tabindex="-1"></iframe></div>
+    <div class="float f1 glass"><i class="ok">↙</i><div><b>Virement reçu</b><small>Mamie · à l’instant</small></div><strong>+500,00 €</strong></div>
+    <div class="float f2 glass"><i class="vi">◔</i><div><b>Dépenses du mois</b><small>−12 % vs octobre</small></div></div>
+    <div class="float f3 glass"><i class="pk">✦</i><div><b>Personnalisable</b><small>solde, noms, couleurs</small></div></div>
+  </div>
 </header>
 
-<section class="wrap uses">
-  <div><b>😈 Blagues</b><p>« Mamie t’a viré 500 € » : déclenche le virement en direct sous les yeux de ta victime.</p></div>
-  <div><b>📱 Sketchs & vidéos</b><p>TikTok, Reels, Shorts : une appli bancaire réaliste pour tes sketchs, sans montrer ta vraie banque.</p></div>
-  <div><b>💡 Storytelling</b><p>Raconte une histoire : la fin du mois difficile, le gros virement surprise, le budget de vacances.</p></div>
-  <div><b>🎓 Tutos budget</b><p>Explique comment gérer ses dépenses avec une appli réaliste et des chiffres inventés.</p></div>
+<section class="wrap" id="usages">
+  <p class="eyebrow">Usages</p>
+  <h2>Une appli, mille histoires.</h2>
+  <div class="uses">
+    <article class="glass tilt"><span class="em">😈</span><h3>Blagues</h3><p>« Mamie t’a viré 500 € » : déclenche le virement en direct sous les yeux de ta victime.</p></article>
+    <article class="glass tilt"><span class="em">📱</span><h3>Sketchs & vidéos</h3><p>TikTok, Reels, Shorts : une appli réaliste pour tes sketchs, sans jamais montrer ta vraie banque.</p></article>
+    <article class="glass tilt"><span class="em">💡</span><h3>Storytelling</h3><p>La fin de mois difficile, le virement surprise, le budget vacances : raconte ton histoire.</p></article>
+    <article class="glass tilt"><span class="em">🎓</span><h3>Tutos budget</h3><p>Explique comment gérer ses dépenses avec des catégories claires et des chiffres inventés.</p></article>
+  </div>
 </section>
 
-<section class="wrap" id="ecrans">
-  <h2>Le simulateur Novabank</h2>
-  <p class="sub">Novabank est une marque inventée : aucune vraie banque n’est imitée, aucune donnée réelle n’est utilisée.</p>
-  <div class="grid" id="grid"></div>
+<section class="wrap" id="fonctions">
+  <p class="eyebrow">Fonctions</p>
+  <h2>Tout ce qu’il faut pour y croire.</h2>
+  <div class="bento">
+    <article class="glass tilt big"><h3>Solde & épargne modifiables</h3><p>Choisis le montant, le titulaire, les initiales et la couleur. Le solde s’anime à chaque opération.</p><div class="mock-bal">2 450<small>,80 €</small></div></article>
+    <article class="glass tilt"><h3>Virements au pavé numérique</h3><p>Choisis un bénéficiaire, tape le montant, ajoute un motif, envoie.</p><div class="mock-pad"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span></div></article>
+    <article class="glass tilt"><h3>Dépenses par catégorie</h3><p>Restaurants, courses, transport… calculés automatiquement.</p><div class="mock-bar"><i style="flex:5;background:#6366f1"></i><i style="flex:2;background:#84cc16"></i><i style="flex:1.5;background:#0ea5e9"></i><i style="flex:1;background:#f97316"></i><i style="flex:.8;background:#ec4899"></i></div></article>
+    <article class="glass tilt"><h3>Mode téléphone</h3><p>Plein écran, navigation au doigt : accueil, transactions, carte, profil.</p></article>
+    <article class="glass tilt"><h3>Notifications en direct</h3><p>Entrée : virement reçu. Tab : paiement. La notification glisse depuis le haut.</p></article>
+    <article class="glass tilt"><h3>Carte gelable</h3><p>Une carte bancaire fictive avec ses réglages qui fonctionnent.</p></article>
+  </div>
 </section>
 
 <section class="wrap how">
-  <h2>Comment ça marche</h2>
-  <ol><li><b>Personnalisez</b> le solde, l’épargne, les opérations, les bénéficiaires, les initiales et la couleur.</li>
-    <li><b>Passez en mode téléphone</b> : l’appli occupe tout l’écran et se navigue au doigt.</li>
-    <li><b>Faites vivre la scène</b> : virement reçu (Entrée), paiement (Tab), ou envoyez un virement depuis l’appli.</li></ol>
+  <p class="eyebrow">Comment ça marche</p>
+  <h2>Prêt en trois gestes.</h2>
+  <ol>
+    <li class="glass"><b>Personnalise</b><span>Solde, épargne, opérations, bénéficiaires, initiales et couleur.</span></li>
+    <li class="glass"><b>Passe en mode téléphone</b><span>L’appli occupe tout l’écran et se navigue au doigt.</span></li>
+    <li class="glass"><b>Fais vivre la scène</b><span>Virement reçu, paiement ou virement envoyé depuis l’appli.</span></li>
+  </ol>
 </section>
 
 <section class="wrap" id="tarifs">
-  <h2>Tarifs</h2>
+  <p class="eyebrow">Tarifs</p>
+  <h2>Simple et sans engagement.</h2>
   <div class="prices">
-    <div class="price"><h3>Gratuit</h3><p class="amt">0 €</p><ul><li>L’appli Novabank complète</li><li>Personnalisation complète</li><li>Liens de blague</li><li>Logo PropDash</li></ul><a class="btn ghost" href="app.html">Commencer</a></div>
-    <div class="price hot"><h3>Pass Créateur</h3><p class="amt">19 € <small>/ 7 jours</small></p><ul><li>Sans logo PropDash</li><li>Télécommande depuis le téléphone</li><li>Scénarios sauvegardés</li><li>Export vidéo 4K</li></ul><a class="btn" href="#" data-soon>Bientôt</a></div>
-    <div class="price"><h3>Studio</h3><p class="amt">49 € <small>/ mois</small></p><ul><li>Tout le Pass Créateur</li><li>Habillage sur mesure (vos marques fictives)</li><li>Plusieurs comptes et historiques</li><li>Licence commerciale</li></ul><a class="btn ghost" href="#" data-soon>Bientôt</a></div>
+    <div class="price glass"><h3>Gratuit</h3><p class="amt">0 €</p><ul><li>L’appli Novabank complète</li><li>Personnalisation complète</li><li>Liens de blague</li><li>Logo PropDash</li></ul><a class="btn ghost glass" href="app.html#t=bank">Commencer</a></div>
+    <div class="price glass hot"><span class="tag">Populaire</span><h3>Pass Créateur</h3><p class="amt">19 € <small>/ 7 jours</small></p><ul><li>Sans logo PropDash</li><li>Télécommande depuis le téléphone</li><li>Scénarios sauvegardés</li><li>Export vidéo 4K</li></ul><a class="btn" href="#" data-soon>Bientôt</a></div>
+    <div class="price glass"><h3>Studio</h3><p class="amt">49 € <small>/ mois</small></p><ul><li>Tout le Pass Créateur</li><li>Habillage sur mesure</li><li>Plusieurs comptes et historiques</li><li>Licence commerciale</li></ul><a class="btn ghost glass" href="#" data-soon>Bientôt</a></div>
   </div>
 </section>
 
 <section class="wrap" id="faq">
-  <h2>FAQ</h2>
-  <details><summary>Novabank est-elle une vraie banque ?</summary><p>Non. Novabank est une banque inventée pour ce simulateur. Tout se passe dans le navigateur : aucun argent, aucune donnée bancaire, aucun paiement réel.</p></details>
-  <details><summary>Pourquoi la mention « SIMULATION » reste-t-elle visible ?</summary><p>Pour qu’une capture d’écran ne puisse jamais servir de fausse preuve de paiement, de solde ou de revenus. Elle reste présente sur toutes les offres.</p></details>
-  <details><summary>Puis-je reproduire l’interface de ma banque ou d’une vraie application ?</summary><p>Non. PropDash n’utilise que des marques et chiffres fictifs. Imiter une vraie entreprise pose des problèmes de droit des marques et peut servir à des arnaques (fausses preuves de paiement, faux soldes) : nous ne le proposons pas.</p></details>
-  <details><summary>Puis-je l’utiliser dans des vidéos monétisées ?</summary><p>Oui avec l’offre Studio, qui inclut une licence commerciale. Le contenu doit rester une mise en scène : Novabank ne doit pas servir à faire croire à de vrais revenus ou à de vrais paiements.</p></details>
-  <details><summary>Ça marche sur mon téléphone ?</summary><p>Oui : passe en mode téléphone, l’appli occupe tout l’écran et se navigue au doigt. Une fois chargée, elle marche même sans connexion.</p></details>
+  <p class="eyebrow">FAQ</p>
+  <h2>Questions fréquentes.</h2>
+  <details class="glass"><summary>Novabank est-elle une vraie banque ?</summary><p>Non. Novabank est une banque inventée pour ce simulateur. Tout se passe dans le navigateur : aucun argent, aucune donnée bancaire, aucun paiement réel.</p></details>
+  <details class="glass"><summary>Pourquoi la mention « compte de simulation » reste-t-elle visible ?</summary><p>Pour qu’une capture d’écran ne puisse jamais servir de fausse preuve de paiement ou de solde. Elle reste discrète, en bas de l’écran, sur toutes les offres.</p></details>
+  <details class="glass"><summary>Puis-je l’utiliser dans des vidéos monétisées ?</summary><p>Oui avec l’offre Studio, qui inclut une licence commerciale. Le contenu doit rester une mise en scène : Novabank ne doit pas servir à faire croire à de vrais revenus ou à de vrais paiements.</p></details>
+  <details class="glass"><summary>Ça marche sur mon téléphone ?</summary><p>Oui : passe en mode téléphone, l’appli occupe tout l’écran et se navigue au doigt. Une fois chargée, elle marche même sans connexion.</p></details>
 </section>
 
-<footer class="wrap foot">© 2026 PropDash · Novabank, simulateur d’appli bancaire fictive. Toutes les marques et données affichées sont fictives.</footer>
+<section class="wrap">
+  <div class="final glass liquid">
+    <h2>Ton compte fictif t’attend.</h2>
+    <p>Personnalise-le en 30 secondes et lance ta première vidéo.</p>
+    <a class="btn" href="app.html#t=bank">Ouvrir Novabank</a>
+  </div>
+</section>
+
+<footer class="wrap foot"><span><svg width="18" height="18" viewBox="0 0 48 48"><use href="#nb-logo"/></svg> Novabank Simulator · par PropDash</span><span>Novabank est une marque fictive. Aucune donnée réelle.</span></footer>
 <script type="module" src="js/site.js"></script>
 </body>
 </html>
