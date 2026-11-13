@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="160" viewBox="0 0 280 80">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b5bf7"/><stop offset="1" stop-color="#ff4fd8"/></linearGradient></defs>
+  <g transform="translate(8 16)"><rect width="48" height="48" rx="14" fill="url(#g)"/>
+    <path d="M14 35V15l19 19V15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M38 6l1.5 4.5L44 12l-4.5 1.5L38 18l-1.5-4.5L32 12l4.5-1.5z" fill="#fff"/></g>
+  <text x="70" y="52" font-family="Inter, Helvetica, Arial, sans-serif" font-size="34" font-weight="800" letter-spacing="-1" fill="#111">Novabank</text>
+</svg>

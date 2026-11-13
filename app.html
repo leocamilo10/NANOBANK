@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PropDash Lecteur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/templates.css">
+</head>
+<body>
+<div id="stage" class="stage"></div>
+<div id="wm">PropDash · simulateur fictif</div>
+<button id="open" title="Réglages (Maj+H)">⚙</button>
+<div id="gate" hidden><button>▶</button></div>
+
+<aside id="panel">
+  <div class="p-head"><a href="index.html" class="logo">◧ PropDash</a><button id="close" title="Masquer (Maj+H)">×</button></div>
+  <label class="fld">Écran<select id="tpl"></select></label>
+  <form id="form" onsubmit="return false"></form>
+  <label class="chk"><input type="checkbox" id="snd" checked> Effets sonores</label>
+  <div class="btns">
+    <button id="trig" class="pri">Déclencher <kbd>Entrée</kbd></button>
+    <button id="alt">Action 2 <kbd>Tab</kbd></button>
+    <button id="rst">Réinitialiser <kbd>Échap</kbd></button>
+    <button id="fs">Plein écran <kbd>Maj+F</kbd></button>
+    <button id="phone" class="acc2">📱 Passer en mode téléphone</button>
+    <button id="share" class="acc">🔗 Copier le lien de blague</button>
+  </div>
+  <h5>Raccourcis</h5>
+  <dl id="keys"></dl>
+  <p class="note">Toutes les marques, données et chiffres affichés sont fictifs. Usage : divertissement, tournage, événementiel.</p>
+</aside>
+<script type="module" src="js/player.js"></script>
+</body>
+</html>
