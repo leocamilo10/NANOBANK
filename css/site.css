@@ -112,3 +112,6 @@ details p{color:var(--mut);margin-top:12px}
 }
 @media(max-width:560px){.uses{grid-template-columns:1fr}.stats{gap:20px}.float{display:none}.brand em{display:none}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+.prices.two{grid-template-columns:repeat(2,minmax(0,420px));justify-content:center}
+.save{margin-top:14px;font-size:13px;color:var(--mut);text-align:center}
+@media(max-width:960px){.prices.two{grid-template-columns:1fr}}
