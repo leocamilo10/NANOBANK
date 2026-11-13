@@ -1,6 +1,6 @@
-# Novabank — simulateur d'appli bancaire
+# Nanobank — simulateur d'appli bancaire
 
-Appli de néobanque **fictive** (marque « Novabank ») pour les blagues entre proches et le contenu sur les réseaux sociaux :
+Appli de néobanque **fictive** (marque « Nanobank ») pour les blagues entre proches et le contenu sur les réseaux sociaux :
 solde, épargne, opérations, bénéficiaires et virements modifiables, navigable au doigt en mode téléphone.
 
 ## Lancer en local
@@ -21,9 +21,9 @@ Produit `dist/propdash.html` (autonome, fonctionne hors-ligne).
 
 - `index.html` / `css/site.css` / `js/site.js` — page d'accueil
 - `app.html` / `js/player.js` / `css/app.css` — éditeur (panneau de réglages, raccourcis, mode téléphone)
-- `js/templates/bank.js` — l'appli Novabank (vues, virement, carte, profil)
+- `js/templates/bank.js` — l'appli Nanobank (vues, virement, carte, profil)
 - `css/templates.css` — styles de l'appli
-- `dist/novabank-logo.svg` — logo
+- `dist/nanobank-logo.svg` — logo
 
 ## Raccourcis
 

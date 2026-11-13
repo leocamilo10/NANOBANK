@@ -39,7 +39,7 @@ const P = {
   del: 'M9 6h11v12H9l-6-6zM12 10l4 4M16 10l-4 4',
   piggy: 'M5 11a6 6 0 0 1 6-5h3a6 6 0 0 1 6 6v1l1 1v3h-2l-1 3h-3v-2h-4v2H8l-1-3a5 5 0 0 1-2-4M15 10h.01',
 };
-// Logo Novabank : un N blanc + une étoile (la « nova ») sur fond dégradé
+// Logo Nanobank : un N blanc + une étoile (la « nova ») sur fond dégradé
 const LOGO = (size = 24) => `<svg class="bk-logo" width="${size}" height="${size}" viewBox="0 0 48 48"><defs><linearGradient id="nbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--c)"/><stop offset="1" stop-color="#ff4fd8"/></linearGradient></defs><rect width="48" height="48" rx="14" fill="url(#nbg)"/><path d="M14 35V15l19 19V15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 6l1.5 4.5L44 12l-4.5 1.5L38 18l-1.5-4.5L32 12l4.5-1.5z" fill="#fff"/></svg>`;
 const ic = (k, cls = '') => `<svg class="ico ${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${P[k]}"/></svg>`;
 
@@ -83,13 +83,13 @@ Salle de sport Move ; -29,99 ; 1 nov.
 Loyer ; -780,00 ; 1 nov.`;
 
 export default {
-  id: 'bank', name: 'Novabank — appli bancaire', emoji: '🏦',
-  desc: 'Appli bancaire mobile de la banque fictive Novabank : solde et opérations modifiables, navigable en mode téléphone.',
+  id: 'bank', name: 'Nanobank — appli bancaire', emoji: '🏦',
+  desc: 'Appli bancaire mobile de la banque fictive Nanobank : solde et opérations modifiables, navigable en mode téléphone.',
   tags: ['Blague', 'Réseaux sociaux'],
   phone: true,
   keys: [['Entrée', 'virement reçu'], ['Tab', 'paiement envoyé'], ['Échap', 'réinitialiser'], ['Clic / toucher', 'naviguer dans l’appli'], ['Chiffres', 'saisir un montant de virement']],
   schema: [
-    { key: 'bank', label: 'Banque (fictive)', type: 'text', default: 'Novabank' },
+    { key: 'bank', label: 'Banque (fictive)', type: 'text', default: 'Nanobank' },
     { key: 'holder', label: 'Titulaire', type: 'text', default: 'Léa Martin' },
     { key: 'initials', label: 'Initiales de l’avatar (vide = auto)', type: 'text', default: '' },
     { key: 'balance', label: 'Solde du compte courant', type: 'number', default: 2450.8, step: 'any' },
@@ -204,7 +204,7 @@ export default {
     let txs, target, shown, stack = ['home'], rcpt = '', amt = '';
     const contacts = String(cfg.contacts || '').split('\n').map(x => x.trim()).filter(Boolean).slice(0, 12);
     const avatar = n => `<i class="bk-ic" style="--k:${['#f97316', '#22c55e', '#0ea5e9', '#a855f7', '#ec4899', '#eab308'][[...n].reduce((a, c) => a + c.charCodeAt(0), 0) % 6]}"><b>${esc(n.split(/\s+/).map(w => (w.match(/\p{L}/u) || [''])[0]).join('').slice(0, 2).toUpperCase())}</b></i>`;
-    q('[data-l="contacts"]').innerHTML = contacts.map((n, i) => `<li data-c="${i}">${avatar(n)}<div><b>${esc(n)}</b><small>Novabank · instantané</small></div>${ic('chev', 'mut')}</li>`).join('') || '<li><div><small>Ajoutez des bénéficiaires dans le panneau</small></div></li>';
+    q('[data-l="contacts"]').innerHTML = contacts.map((n, i) => `<li data-c="${i}">${avatar(n)}<div><b>${esc(n)}</b><small>Nanobank · instantané</small></div>${ic('chev', 'mut')}</li>`).join('') || '<li><div><small>Ajoutez des bénéficiaires dans le panneau</small></div></li>';
     const amountVal = () => Number(amt.replace(',', '.')) || 0;
     function renderAmount() {
       const a = amountVal(), ok = a > 0 && a <= target;
