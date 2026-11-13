@@ -1,6 +1,6 @@
 # Novabank — simulateur d'appli bancaire
 
-Appli de néobanque **fictive** (marque « Novabank ») pour blagues entre proches et tournages :
+Appli de néobanque **fictive** (marque « Novabank ») pour les blagues entre proches et le contenu sur les réseaux sociaux :
 solde, épargne, opérations, bénéficiaires et virements modifiables, navigable au doigt en mode téléphone.
 
 ## Lancer en local

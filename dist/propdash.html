@@ -291,6 +291,8 @@ summary{cursor:pointer;font-weight:600}
 details p{color:var(--mut);margin-top:10px;font-size:15px}
 .foot{padding:40px 20px;color:var(--mut);font-size:13px;border-top:1px solid var(--line)}
 @media(max-width:900px){.grid,.prices,.how ol{grid-template-columns:1fr}.uses{grid-template-columns:1fr 1fr}.nav div a:not(.btn){display:none}}
+.nb-badge{display:inline-flex;align-items:center;gap:4px;background:#14151d;border:1px solid var(--line);border-radius:30px;padding:6px 16px 6px 8px;font-size:15px}
+.nb-badge b{font-weight:800;letter-spacing:-.01em;margin-right:8px}.nb-badge span{color:var(--mut);font-size:13px}
 
 
 #home{position:fixed;inset:0;overflow:auto;z-index:500}
@@ -324,30 +326,30 @@ details p{color:var(--mut);margin-top:10px;font-size:15px}
   </div>
   <h5>Raccourcis</h5>
   <dl id="keys"></dl>
-  <p class="note">Toutes les marques, données et chiffres affichés sont fictifs. Usage : divertissement, tournage, événementiel.</p>
+  <p class="note">Toutes les marques, données et chiffres affichés sont fictifs. Usage : divertissement et contenu créatif.</p>
 </aside>
 
 <div id="home"><nav class="wrap nav"><a class="logo" href="#">◧ PropDash</a>
-  <div><a href="#ecrans">Le simulateur</a><a href="#tarifs">Tarifs</a><a href="#faq">FAQ</a><a class="btn sm" href="#" data-open="bank">Ouvrir l’éditeur</a></div></nav>
+  <div><a href="#ecrans">Novabank</a><a href="#tarifs">Tarifs</a><a href="#faq">FAQ</a><a class="btn sm" href="#" data-open="bank">Ouvrir l’éditeur</a></div></nav>
 
 <header class="wrap hero">
-  <p class="eyebrow">Simulateur d’appli bancaire</p>
-  <h1>Le compte en banque<br><span>de vos rêves.</span></h1>
-  <p class="lead">Une <b>appli de néobanque fictive</b> plus vraie que nature : solde, opérations, bénéficiaires et virements modifiables, navigable au doigt en mode téléphone. Pour faire une blague à vos proches ou équiper un tournage.</p>
-  <div class="cta"><a class="btn" href="#" data-open="bank">Essayer gratuitement</a><a class="btn ghost" href="#ecrans">Voir le simulateur</a></div>
+  <p class="nb-badge"><svg width="28" height="28" viewBox="0 0 48 48" style="vertical-align:-7px;margin-right:8px"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b5bf7"/><stop offset="1" stop-color="#ff4fd8"/></linearGradient></defs><rect width="48" height="48" rx="14" fill="url(#lg)"/><path d="M14 35V15l19 19V15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 6l1.5 4.5L44 12l-4.5 1.5L38 18l-1.5-4.5L32 12l4.5-1.5z" fill="#fff"/></svg><b>Novabank</b><span>la néobanque qui n’existe pas</span></p>
+  <h1>Fais vivre tes idées<br><span>avec Novabank.</span></h1>
+  <p class="lead"><b>Novabank</b> est une néobanque <b>100 % fictive</b> : une appli plus vraie que nature, avec solde, opérations, bénéficiaires et virements modifiables, navigable au doigt en mode téléphone. Pour tes blagues, tes sketchs et ton contenu sur les réseaux sociaux.</p>
+  <div class="cta"><a class="btn" href="#" data-open="bank">Essayer gratuitement</a><a class="btn ghost" href="#ecrans">Découvrir Novabank</a></div>
   <div class="hero-shot"><div class="mini" id="heroMini"></div></div>
 </header>
 
 <section class="wrap uses">
-  <div><b>😈 Blagues</b><p>« Mamie t’a viré 500 € » : déclenchez le virement en direct sous les yeux de votre victime.</p></div>
-  <div><b>🎬 Tournages</b><p>Écrans d’accessoires pour films, clips et sketchs : le personnage devient riche en une scène.</p></div>
-  <div><b>🎓 Formations</b><p>Apprenez à gérer un budget avec une appli réaliste, des catégories de dépenses et des chiffres fictifs.</p></div>
-  <div><b>🎲 Jeux</b><p>Murder parties, jeux de rôle, escape games : un téléphone de personnage avec son vrai-faux compte.</p></div>
+  <div><b>😈 Blagues</b><p>« Mamie t’a viré 500 € » : déclenche le virement en direct sous les yeux de ta victime.</p></div>
+  <div><b>📱 Sketchs & vidéos</b><p>TikTok, Reels, Shorts : une appli bancaire réaliste pour tes sketchs, sans montrer ta vraie banque.</p></div>
+  <div><b>💡 Storytelling</b><p>Raconte une histoire : la fin du mois difficile, le gros virement surprise, le budget de vacances.</p></div>
+  <div><b>🎓 Tutos budget</b><p>Explique comment gérer ses dépenses avec une appli réaliste et des chiffres inventés.</p></div>
 </section>
 
 <section class="wrap" id="ecrans">
-  <h2>Le simulateur</h2>
-  <p class="sub">Animés en temps réel, 100 % personnalisables, avec des marques et des données entièrement fictives.</p>
+  <h2>Le simulateur Novabank</h2>
+  <p class="sub">Novabank est une marque inventée : aucune vraie banque n’est imitée, aucune donnée réelle n’est utilisée.</p>
   <div class="grid" id="grid"></div>
 </section>
 
@@ -361,22 +363,22 @@ details p{color:var(--mut);margin-top:10px;font-size:15px}
 <section class="wrap" id="tarifs">
   <h2>Tarifs</h2>
   <div class="prices">
-    <div class="price"><h3>Gratuit</h3><p class="amt">0 €</p><ul><li>Le simulateur complet</li><li>Personnalisation complète</li><li>Liens de blague</li><li>Logo PropDash</li></ul><a class="btn ghost" href="#" data-open="bank">Commencer</a></div>
-    <div class="price hot"><h3>Pass Tournage</h3><p class="amt">19 € <small>/ 7 jours</small></p><ul><li>Sans logo PropDash</li><li>Télécommande depuis le téléphone</li><li>Scénarios sauvegardés</li><li>Export vidéo 4K</li></ul><a class="btn" href="#" data-soon>Bientôt</a></div>
-    <div class="price"><h3>Studio</h3><p class="amt">49 € <small>/ mois</small></p><ul><li>Tout le Pass Tournage</li><li>Habillage sur mesure (vos marques fictives)</li><li>Plusieurs comptes et historiques</li><li>Licence commerciale</li></ul><a class="btn ghost" href="#" data-soon>Bientôt</a></div>
+    <div class="price"><h3>Gratuit</h3><p class="amt">0 €</p><ul><li>L’appli Novabank complète</li><li>Personnalisation complète</li><li>Liens de blague</li><li>Logo PropDash</li></ul><a class="btn ghost" href="#" data-open="bank">Commencer</a></div>
+    <div class="price hot"><h3>Pass Créateur</h3><p class="amt">19 € <small>/ 7 jours</small></p><ul><li>Sans logo PropDash</li><li>Télécommande depuis le téléphone</li><li>Scénarios sauvegardés</li><li>Export vidéo 4K</li></ul><a class="btn" href="#" data-soon>Bientôt</a></div>
+    <div class="price"><h3>Studio</h3><p class="amt">49 € <small>/ mois</small></p><ul><li>Tout le Pass Créateur</li><li>Habillage sur mesure (vos marques fictives)</li><li>Plusieurs comptes et historiques</li><li>Licence commerciale</li></ul><a class="btn ghost" href="#" data-soon>Bientôt</a></div>
   </div>
 </section>
 
 <section class="wrap" id="faq">
   <h2>FAQ</h2>
-  <details><summary>Est-ce un vrai compte ou de vrais revenus ?</summary><p>Non. Tout est simulé dans le navigateur : aucun argent, aucune donnée bancaire, aucun paiement réel.</p></details>
+  <details><summary>Novabank est-elle une vraie banque ?</summary><p>Non. Novabank est une banque inventée pour ce simulateur. Tout se passe dans le navigateur : aucun argent, aucune donnée bancaire, aucun paiement réel.</p></details>
   <details><summary>Pourquoi la mention « SIMULATION » reste-t-elle visible ?</summary><p>Pour qu’une capture d’écran ne puisse jamais servir de fausse preuve de paiement, de solde ou de revenus. Elle reste présente sur toutes les offres.</p></details>
   <details><summary>Puis-je reproduire l’interface de ma banque ou d’une vraie application ?</summary><p>Non. PropDash n’utilise que des marques et chiffres fictifs. Imiter une vraie entreprise pose des problèmes de droit des marques et peut servir à des arnaques (fausses preuves de paiement, faux soldes) : nous ne le proposons pas.</p></details>
-  <details><summary>Puis-je l’utiliser dans un film diffusé commercialement ?</summary><p>Oui avec l’offre Studio, qui inclut une licence commerciale et des écrans à vos marques fictives.</p></details>
-  <details><summary>Ça marche hors-ligne sur le plateau ?</summary><p>Une fois la page chargée, les animations tournent sans connexion.</p></details>
+  <details><summary>Puis-je l’utiliser dans des vidéos monétisées ?</summary><p>Oui avec l’offre Studio, qui inclut une licence commerciale. Le contenu doit rester une mise en scène : Novabank ne doit pas servir à faire croire à de vrais revenus ou à de vrais paiements.</p></details>
+  <details><summary>Ça marche sur mon téléphone ?</summary><p>Oui : passe en mode téléphone, l’appli occupe tout l’écran et se navigue au doigt. Une fois chargée, elle marche même sans connexion.</p></details>
 </section>
 
-<footer class="wrap foot">© 2026 PropDash · Simulateur d’appli bancaire. Toutes les marques et données affichées sont fictives.</footer>
+<footer class="wrap foot">© 2026 PropDash · Novabank, simulateur d’appli bancaire fictive. Toutes les marques et données affichées sont fictives.</footer>
 </div>
 <script type="module">
 const home = document.getElementById('home');
@@ -584,9 +586,9 @@ Salle de sport Move ; -29,99 ; 1 nov.
 Loyer ; -780,00 ; 1 nov.`;
 
 return {
-  id: 'bank', name: 'Néobanque fictive', emoji: '🏦',
+  id: 'bank', name: 'Novabank — appli bancaire', emoji: '🏦',
   desc: 'Appli bancaire mobile de la banque fictive Novabank : solde et opérations modifiables, navigable en mode téléphone.',
-  tags: ['Blague', 'Tournage'],
+  tags: ['Blague', 'Réseaux sociaux'],
   phone: true,
   keys: [['Entrée', 'virement reçu'], ['Tab', 'paiement envoyé'], ['Échap', 'réinitialiser'], ['Clic / toucher', 'naviguer dans l’appli'], ['Chiffres', 'saisir un montant de virement']],
   schema: [

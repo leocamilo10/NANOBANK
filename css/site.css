@@ -50,3 +50,5 @@ summary{cursor:pointer;font-weight:600}
 details p{color:var(--mut);margin-top:10px;font-size:15px}
 .foot{padding:40px 20px;color:var(--mut);font-size:13px;border-top:1px solid var(--line)}
 @media(max-width:900px){.grid,.prices,.how ol{grid-template-columns:1fr}.uses{grid-template-columns:1fr 1fr}.nav div a:not(.btn){display:none}}
+.nb-badge{display:inline-flex;align-items:center;gap:4px;background:#14151d;border:1px solid var(--line);border-radius:30px;padding:6px 16px 6px 8px;font-size:15px}
+.nb-badge b{font-weight:800;letter-spacing:-.01em;margin-right:8px}.nb-badge span{color:var(--mut);font-size:13px}

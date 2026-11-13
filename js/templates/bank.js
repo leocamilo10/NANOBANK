@@ -83,9 +83,9 @@ Salle de sport Move ; -29,99 ; 1 nov.
 Loyer ; -780,00 ; 1 nov.`;
 
 export default {
-  id: 'bank', name: 'Néobanque fictive', emoji: '🏦',
+  id: 'bank', name: 'Novabank — appli bancaire', emoji: '🏦',
   desc: 'Appli bancaire mobile de la banque fictive Novabank : solde et opérations modifiables, navigable en mode téléphone.',
-  tags: ['Blague', 'Tournage'],
+  tags: ['Blague', 'Réseaux sociaux'],
   phone: true,
   keys: [['Entrée', 'virement reçu'], ['Tab', 'paiement envoyé'], ['Échap', 'réinitialiser'], ['Clic / toucher', 'naviguer dans l’appli'], ['Chiffres', 'saisir un montant de virement']],
   schema: [
