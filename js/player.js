@@ -92,6 +92,28 @@ addEventListener('keydown', e => {
   else inst?.onKey?.(e);
 });
 
+// Conseil d'installation : sur téléphone, le vrai plein écran passe par « Ajouter à l'écran d'accueil »
+(() => {
+  const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+  if (standalone || !matchMedia('(max-width: 700px)').matches) return;
+  try { if (localStorage.getItem('nb_tip_install')) return; } catch { /* stockage indisponible */ }
+  const ios = /iPhone|iPad|iPod/.test(navigator.userAgent);
+  const tip = document.createElement('div');
+  tip.className = 'install-tip';
+  tip.innerHTML = ios
+    ? '<b>Plein écran comme une vraie appli</b><span>Touche <i>Partager</i> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg> puis <i>Sur l’écran d’accueil</i>.</span><button>OK</button>'
+    : '<b>Plein écran comme une vraie appli</b><span>Ouvre le menu <i>⋮</i> puis <i>Installer l’appli</i> ou <i>Ajouter à l’écran d’accueil</i>.</span><button>OK</button>';
+  const close = () => { tip.remove(); try { localStorage.setItem('nb_tip_install', '1'); } catch { /* stockage indisponible */ } };
+  tip.querySelector('button').onclick = close;
+  setTimeout(() => document.body.append(tip), 1200);
+  setTimeout(() => tip.isConnected && tip.classList.add('out'), 14000);
+})();
+
+// Sur écran tactile : le bouton « Personnaliser » s'efface après 3,5 s, un toucher le fait réapparaître
+let touchIdle;
+const wake = () => { document.body.classList.remove('touch-idle'); clearTimeout(touchIdle); touchIdle = setTimeout(() => document.body.classList.add('touch-idle'), 3500); };
+addEventListener('touchstart', wake, { passive: true }); wake();
+
 // Curseur masqué après 2 s d'inactivité
 let idle;
 addEventListener('mousemove', () => { document.body.classList.remove('idle'); clearTimeout(idle); idle = setTimeout(() => document.body.classList.add('idle'), 2000); });

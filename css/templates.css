@@ -191,3 +191,29 @@ body.embed .bk{background:transparent}
 body.embed .bk-phone{width:100%;height:100%;box-shadow:none;border-radius:46px}
 .bk-tabs{padding-bottom:max(16px,env(safe-area-inset-bottom))}
 .bk-status{padding-top:max(14px,env(safe-area-inset-top))}
+
+@media (max-width:700px){
+  body.phone-mode .bk-status,body.embed-none .bk-status{display:none}
+  body.phone-mode .bk-view,body.phone-mode .bk-view[data-v="home"]{padding-top:calc(env(safe-area-inset-top) + 14px)}
+  body.phone-mode .bk-dethero{margin-top:calc(-1 * (env(safe-area-inset-top) + 14px));padding-top:calc(env(safe-area-inset-top) + 14px)}
+  body.phone-mode .bk-sentv{padding-top:calc(env(safe-area-inset-top) + 56px)!important}
+  body.phone-mode .bk-notif{top:calc(env(safe-area-inset-top) + 8px)}
+  body.phone-mode .bk-acc{padding-top:26px}
+}
+@media (max-height:700px){
+  .bk-amt{font-size:46px;padding-top:6px}
+  .bk-to{padding:8px 12px}
+  .bk-avail{margin-bottom:8px}
+  .bk-motif{padding:8px 12px}
+  .bk-pad{margin:8px 0 6px;gap:2px}
+  .bk-pad button{height:44px;font-size:22px!important}
+  .bk-cta{height:48px}
+  .bk-sentv{padding-top:48px!important}
+  .bk-okring{width:76px;height:76px;margin-bottom:14px}
+  .bk-sentamt{font-size:36px}
+}
+@media (max-height:600px){
+  .bk-pad button{height:38px;font-size:20px!important}
+  .bk-amt{font-size:38px}
+  .bk-motif{display:none}
+}

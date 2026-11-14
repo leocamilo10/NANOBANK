@@ -104,6 +104,23 @@ h5{color:#6f6b63}dt{color:#f3efe7}dd,.note{color:#7a766d}
 .lock-form button:hover{border-color:#6a6a6a}
 .lock-btn[hidden]{display:none}
 
+/* Téléphone : bouton réglages en haut à droite, discret, masqué automatiquement */
+@media (max-width:700px){
+  #open,body.phone-mode #open{top:calc(env(safe-area-inset-top) + 10px);bottom:auto;right:10px;width:34px;height:34px;padding:0;border-radius:50%;opacity:.55;transition:opacity .4s}
+  #open b{display:none}
+  body.touch-idle #open{opacity:0;pointer-events:none}
+}
+
+/* Conseil « Ajouter à l'écran d'accueil » */
+.install-tip{position:fixed;left:12px;right:12px;bottom:calc(96px + env(safe-area-inset-bottom));z-index:150;display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:center;padding:14px 16px;border-radius:16px;background:rgba(20,20,22,.94);border:1px solid #2c2c30;box-shadow:0 14px 40px rgba(0,0,0,.5);color:#f3efe7;font:13px/1.45 Geist,Inter,sans-serif;animation:tipIn .5s cubic-bezier(.2,1.2,.4,1)}
+.install-tip b{font-weight:600;font-size:14px}
+.install-tip span{grid-column:1;color:#b9b4aa}
+.install-tip i{font-style:normal;color:#f3efe7;font-weight:600}
+.install-tip svg{vertical-align:-2px}
+.install-tip button{grid-column:2;grid-row:1/3;background:#f3efe7;color:#0b0b0c;border:0;border-radius:10px;padding:9px 14px;font:600 13px Geist,Inter,sans-serif}
+.install-tip.out{opacity:0;transform:translateY(20px);transition:.4s;pointer-events:none}
+@keyframes tipIn{from{opacity:0;transform:translateY(30px)}}
+
 /* ---------- Surimpression commune ---------- */
 .ov{position:absolute;inset:0;display:none;place-items:center;z-index:20;pointer-events:none;background:rgba(0,0,0,.45)}
 .ov.on{display:grid}
@@ -297,6 +314,32 @@ body.embed .bk{background:transparent}
 body.embed .bk-phone{width:100%;height:100%;box-shadow:none;border-radius:46px}
 .bk-tabs{padding-bottom:max(16px,env(safe-area-inset-bottom))}
 .bk-status{padding-top:max(14px,env(safe-area-inset-top))}
+
+@media (max-width:700px){
+  body.phone-mode .bk-status,body.embed-none .bk-status{display:none}
+  body.phone-mode .bk-view,body.phone-mode .bk-view[data-v="home"]{padding-top:calc(env(safe-area-inset-top) + 14px)}
+  body.phone-mode .bk-dethero{margin-top:calc(-1 * (env(safe-area-inset-top) + 14px));padding-top:calc(env(safe-area-inset-top) + 14px)}
+  body.phone-mode .bk-sentv{padding-top:calc(env(safe-area-inset-top) + 56px)!important}
+  body.phone-mode .bk-notif{top:calc(env(safe-area-inset-top) + 8px)}
+  body.phone-mode .bk-acc{padding-top:26px}
+}
+@media (max-height:700px){
+  .bk-amt{font-size:46px;padding-top:6px}
+  .bk-to{padding:8px 12px}
+  .bk-avail{margin-bottom:8px}
+  .bk-motif{padding:8px 12px}
+  .bk-pad{margin:8px 0 6px;gap:2px}
+  .bk-pad button{height:44px;font-size:22px!important}
+  .bk-cta{height:48px}
+  .bk-sentv{padding-top:48px!important}
+  .bk-okring{width:76px;height:76px;margin-bottom:14px}
+  .bk-sentamt{font-size:36px}
+}
+@media (max-height:600px){
+  .bk-pad button{height:38px;font-size:20px!important}
+  .bk-amt{font-size:38px}
+  .bk-motif{display:none}
+}
 
 :where(#home) *{box-sizing:border-box;margin:0;padding:0}
 :where(#home){--bg:#000;--txt:#f2f3f8;--mut:#bcc0d2;--v:#5b5bf7;--p:#ff4fd8;--cy:#33d1ff;--ok:#3ddc97}
@@ -1311,6 +1354,28 @@ addEventListener('keydown', e => {
   else if (e.key === 'Escape') inst?.reset?.();
   else inst?.onKey?.(e);
 });
+
+// Conseil d'installation : sur téléphone, le vrai plein écran passe par « Ajouter à l'écran d'accueil »
+(() => {
+  const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+  if (standalone || !matchMedia('(max-width: 700px)').matches) return;
+  try { if (localStorage.getItem('nb_tip_install')) return; } catch { /* stockage indisponible */ }
+  const ios = /iPhone|iPad|iPod/.test(navigator.userAgent);
+  const tip = document.createElement('div');
+  tip.className = 'install-tip';
+  tip.innerHTML = ios
+    ? '<b>Plein écran comme une vraie appli</b><span>Touche <i>Partager</i> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg> puis <i>Sur l’écran d’accueil</i>.</span><button>OK</button>'
+    : '<b>Plein écran comme une vraie appli</b><span>Ouvre le menu <i>⋮</i> puis <i>Installer l’appli</i> ou <i>Ajouter à l’écran d’accueil</i>.</span><button>OK</button>';
+  const close = () => { tip.remove(); try { localStorage.setItem('nb_tip_install', '1'); } catch { /* stockage indisponible */ } };
+  tip.querySelector('button').onclick = close;
+  setTimeout(() => document.body.append(tip), 1200);
+  setTimeout(() => tip.isConnected && tip.classList.add('out'), 14000);
+})();
+
+// Sur écran tactile : le bouton « Personnaliser » s'efface après 3,5 s, un toucher le fait réapparaître
+let touchIdle;
+const wake = () => { document.body.classList.remove('touch-idle'); clearTimeout(touchIdle); touchIdle = setTimeout(() => document.body.classList.add('touch-idle'), 3500); };
+addEventListener('touchstart', wake, { passive: true }); wake();
 
 // Curseur masqué après 2 s d'inactivité
 let idle;

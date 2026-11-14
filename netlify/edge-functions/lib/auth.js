@@ -10,7 +10,7 @@ export const env = (k) => {
 
 export const SESSION = 'nb_session';   // pass d'accès à l'appli
 export const OAUTH = 'nb_oauth';       // état temporaire pendant la connexion Whop
-export const SESSION_HOURS = 24;       // on revérifie l'achat auprès de Whop chaque jour
+export const SESSION_HOURS = 24 * 7;   // on revérifie l'achat auprès de Whop chaque semaine
 
 export const b64url = (buf) =>
   btoa(String.fromCharCode(...new Uint8Array(buf))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
