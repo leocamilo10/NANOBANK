@@ -116,3 +116,5 @@ details p{color:var(--mut);margin-top:12px}
 .save{margin-top:14px;font-size:13px;color:var(--mut);text-align:center}
 @media(max-width:960px){.prices.two{grid-template-columns:1fr}}
 .tag.gold{background:linear-gradient(135deg,#f5c96a,#e58a2b);color:#1a1205}
+.prices.one{grid-template-columns:minmax(0,460px);justify-content:center}
+.prices.one .price.hot{transform:none}
