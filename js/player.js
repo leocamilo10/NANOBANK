@@ -38,6 +38,7 @@ function buildPanel() {
   $('#form').innerHTML = tpl.schema.map(f => {
     const val = cfg[f.key];
     if (f.type === 'checkbox') return `<label class="chk"><input type="checkbox" name="${f.key}" ${val ? 'checked' : ''}> ${esc(f.label)}</label>`;
+    if (f.type === 'select') return `<label class="fld">${esc(f.label)}<select name="${f.key}">${f.options.map(([v, l]) => `<option value="${esc(v)}" ${v === val ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select></label>`;
     if (f.type === 'textarea') return `<label class="fld">${esc(f.label)}<textarea name="${f.key}" rows="7">${esc(val)}</textarea></label>`;
     const extra = ['min', 'max', 'step'].filter(k => f[k] != null).map(k => `${k}="${f[k]}"`).join(' ');
     return `<label class="fld">${esc(f.label)}${f.type === 'range' ? ` <output>${esc(val)}</output>` : ''}<input type="${f.type}" name="${f.key}" value="${esc(val)}" ${extra}></label>`;

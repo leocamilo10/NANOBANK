@@ -229,3 +229,24 @@ body.embed .bk-phone{width:100%;height:100%;box-shadow:none;border-radius:46px}
 .bk-glow{left:0;right:0}
 .bk-accounts{margin:0}
 .bk-acc{padding-left:0;padding-right:0}
+
+/* ===================== Styles de fond de l'accueil (au choix dans les réglages) ===================== */
+/* Aurore : taches de lumière floues aux deux couleurs, qui dérivent lentement */
+.bk[data-bg="aurore"] .bk-view[data-v="home"]{background:var(--bg)}
+.bk[data-bg="aurore"] .bk-glow{top:-140px;height:600px;background:
+  radial-gradient(42% 38% at 22% 32%,var(--c),transparent 70%),
+  radial-gradient(38% 34% at 80% 22%,var(--c2),transparent 70%),
+  radial-gradient(55% 45% at 55% 62%,color-mix(in srgb,var(--c) 60%,var(--c2)),transparent 75%);
+  filter:blur(28px);opacity:.95;animation:auroraDrift 16s ease-in-out infinite alternate}
+@keyframes auroraDrift{0%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-4%,3%,0) scale(1.08)}100%{transform:translate3d(4%,-2%,0) scale(1.04)}}
+.bk[data-bg="aurore"] .bk-glow::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,var(--bg))}
+/* Halo : une seule lumière ronde derrière le solde */
+.bk[data-bg="halo"] .bk-view[data-v="home"]{background:radial-gradient(70% 42% at 50% 22%,color-mix(in srgb,var(--c) 85%,#fff 15%),color-mix(in srgb,var(--c2) 55%,var(--bg)) 55%,var(--bg) 85%)}
+.bk[data-bg="halo"] .bk-glow{display:none}
+/* Dégradé vertical : de la couleur principale vers la secondaire */
+.bk[data-bg="degrade"] .bk-view[data-v="home"]{background:linear-gradient(180deg,var(--c) 0,var(--c2) 42%,var(--bg) 78%)}
+.bk[data-bg="degrade"] .bk-glow{display:none}
+/* Couleur unie */
+.bk[data-bg="uni"] .bk-view[data-v="home"]{background:linear-gradient(180deg,var(--c) 0,var(--c) 46%,var(--bg) 70%)}
+.bk[data-bg="uni"] .bk-glow{display:none}
+@media (prefers-reduced-motion:reduce){.bk-glow{animation:none!important}}

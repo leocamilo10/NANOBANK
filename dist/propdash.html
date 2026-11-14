@@ -359,6 +359,27 @@ body.embed .bk-phone{width:100%;height:100%;box-shadow:none;border-radius:46px}
 .bk-accounts{margin:0}
 .bk-acc{padding-left:0;padding-right:0}
 
+/* ===================== Styles de fond de l'accueil (au choix dans les réglages) ===================== */
+/* Aurore : taches de lumière floues aux deux couleurs, qui dérivent lentement */
+.bk[data-bg="aurore"] .bk-view[data-v="home"]{background:var(--bg)}
+.bk[data-bg="aurore"] .bk-glow{top:-140px;height:600px;background:
+  radial-gradient(42% 38% at 22% 32%,var(--c),transparent 70%),
+  radial-gradient(38% 34% at 80% 22%,var(--c2),transparent 70%),
+  radial-gradient(55% 45% at 55% 62%,color-mix(in srgb,var(--c) 60%,var(--c2)),transparent 75%);
+  filter:blur(28px);opacity:.95;animation:auroraDrift 16s ease-in-out infinite alternate}
+@keyframes auroraDrift{0%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-4%,3%,0) scale(1.08)}100%{transform:translate3d(4%,-2%,0) scale(1.04)}}
+.bk[data-bg="aurore"] .bk-glow::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,var(--bg))}
+/* Halo : une seule lumière ronde derrière le solde */
+.bk[data-bg="halo"] .bk-view[data-v="home"]{background:radial-gradient(70% 42% at 50% 22%,color-mix(in srgb,var(--c) 85%,#fff 15%),color-mix(in srgb,var(--c2) 55%,var(--bg)) 55%,var(--bg) 85%)}
+.bk[data-bg="halo"] .bk-glow{display:none}
+/* Dégradé vertical : de la couleur principale vers la secondaire */
+.bk[data-bg="degrade"] .bk-view[data-v="home"]{background:linear-gradient(180deg,var(--c) 0,var(--c2) 42%,var(--bg) 78%)}
+.bk[data-bg="degrade"] .bk-glow{display:none}
+/* Couleur unie */
+.bk[data-bg="uni"] .bk-view[data-v="home"]{background:linear-gradient(180deg,var(--c) 0,var(--c) 46%,var(--bg) 70%)}
+.bk[data-bg="uni"] .bk-glow{display:none}
+@media (prefers-reduced-motion:reduce){.bk-glow{animation:none!important}}
+
 :where(#home) *{box-sizing:border-box;margin:0;padding:0}
 :where(#home){--bg:#000;--txt:#f2f3f8;--mut:#bcc0d2;--v:#5b5bf7;--p:#ff4fd8;--cy:#33d1ff;--ok:#3ddc97}
 :where(#home){background:var(--bg);color:var(--txt);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:hidden}
@@ -1030,7 +1051,9 @@ return {
     { key: 'inAmount', label: 'Virement reçu — montant', type: 'number', default: 500, step: 'any' },
     { key: 'outLabel', label: 'Paiement (Tab) — libellé', type: 'text', default: 'Restaurant Le Zinc' },
     { key: 'outAmount', label: 'Paiement — montant', type: 'number', default: 86.5, step: 'any' },
-    { key: 'color', label: 'Couleur', type: 'color', default: '#5b5bf7' },
+    { key: 'bg', label: 'Style de fond', type: 'select', default: 'aurore', options: [['aurore', 'Aurore (lumières douces)'], ['halo', 'Halo'], ['degrade', 'Dégradé vertical'], ['uni', 'Couleur unie']] },
+    { key: 'color', label: 'Couleur principale', type: 'color', default: '#5b5bf7' },
+    { key: 'color2', label: 'Couleur secondaire du fond', type: 'color', default: '#12a4a0' },
   ],
   mount(root, cfg) {
     const S = new Scope(), col = safeColor(cfg.color, '#5b5bf7'), cur = String(cfg.currency || '€').slice(0, 4);
@@ -1044,7 +1067,7 @@ return {
     const toggle = (k, label, sub, on) => `<div class="bk-row"><i class="bk-ic sm">${ic(k)}</i><div><b>${label}</b><small>${sub}</small></div><button class="bk-sw ${on ? 'on' : ''}" data-sw="${k}"><span></span></button></div>`;
     const link = (k, label) => `<div class="bk-row"><i class="bk-ic sm">${ic(k)}</i><div><b>${label}</b></div>${ic('chev', 'mut')}</div>`;
 
-    const v = h(`<div class="bk" style="--c:${col}"><div class="bk-phone">
+    const v = h(`<div class="bk" data-bg="${esc(cfg.bg || 'aurore')}" style="--c:${col};--c2:${safeColor(cfg.color2, '#12a4a0')}"><div class="bk-phone">
       <div class="bk-status"><span class="bk-time"></span><span class="bk-sig"><i></i><i></i><i></i><i></i> 5G <b></b></span></div>
       <div class="bk-views">
         <section class="bk-view on" data-v="home">
@@ -1319,6 +1342,7 @@ function buildPanel() {
   $('#form').innerHTML = tpl.schema.map(f => {
     const val = cfg[f.key];
     if (f.type === 'checkbox') return `<label class="chk"><input type="checkbox" name="${f.key}" ${val ? 'checked' : ''}> ${esc(f.label)}</label>`;
+    if (f.type === 'select') return `<label class="fld">${esc(f.label)}<select name="${f.key}">${f.options.map(([v, l]) => `<option value="${esc(v)}" ${v === val ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select></label>`;
     if (f.type === 'textarea') return `<label class="fld">${esc(f.label)}<textarea name="${f.key}" rows="7">${esc(val)}</textarea></label>`;
     const extra = ['min', 'max', 'step'].filter(k => f[k] != null).map(k => `${k}="${f[k]}"`).join(' ');
     return `<label class="fld">${esc(f.label)}${f.type === 'range' ? ` <output>${esc(val)}</output>` : ''}<input type="${f.type}" name="${f.key}" value="${esc(val)}" ${extra}></label>`;
