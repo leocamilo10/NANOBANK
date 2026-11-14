@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Nanobank Simulator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;background:#000;color:#ddd;overflow:hidden;font-family:Inter,system-ui,sans-serif}
@@ -86,7 +86,7 @@ body.phone-mode .bk{background:var(--bg)}
 .bk-view.on{display:block;animation:bkin .28s cubic-bezier(.2,.8,.2,1)}
 @keyframes bkin{from{opacity:0;transform:translateX(18px)}}
 .bk-view[data-v="home"]{padding-top:50px}
-.bk-glow{position:absolute;left:-20%;right:-20%;top:-120px;height:520px;background:radial-gradient(60% 55% at 30% 40%,color-mix(in srgb,var(--c) 90%,#fff 10%),transparent 70%),radial-gradient(50% 50% at 80% 30%,color-mix(in srgb,var(--c) 70%,#ff4fd8 30%),transparent 70%),radial-gradient(70% 60% at 50% 70%,color-mix(in srgb,var(--c) 50%,#000),transparent 80%);opacity:.9;filter:blur(10px);pointer-events:none;z-index:0}
+.bk-glow{position:absolute;left:-20%;right:-20%;top:-120px;height:520px;background:radial-gradient(60% 55% at 30% 40%,color-mix(in srgb,var(--c) 90%,#fff 10%),transparent 70%),radial-gradient(50% 50% at 80% 30%,color-mix(in srgb,var(--c) 70%,#ffffff 30%),transparent 70%),radial-gradient(70% 60% at 50% 70%,color-mix(in srgb,var(--c) 50%,#000),transparent 80%);opacity:.9;filter:blur(10px);pointer-events:none;z-index:0}
 .bk-view[data-v="home"]>*:not(.bk-glow){position:relative;z-index:1}
 /* en-tête accueil */
 .bk-top{display:flex;align-items:center;gap:10px}
@@ -169,7 +169,7 @@ body.phone-mode .bk{background:var(--bg)}
 .bk-cardactions .ico{width:50px;height:50px;padding:14px;border-radius:50%;background:var(--card)}
 /* carte */
 .bk-cardwrap{perspective:900px;margin:6px 4px 18px}
-.bk-card{position:relative;aspect-ratio:1.586;border-radius:20px;padding:20px;display:flex;flex-direction:column;overflow:hidden;background:radial-gradient(120% 90% at 0% 0%,color-mix(in srgb,var(--c) 85%,#fff 15%),transparent 60%),radial-gradient(100% 100% at 100% 100%,color-mix(in srgb,var(--c) 60%,#ff4fd8 40%),transparent 60%),color-mix(in srgb,var(--c) 55%,#000);box-shadow:0 24px 50px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.12);transform:rotateX(8deg);transition:filter .3s}
+.bk-card{position:relative;aspect-ratio:1.586;border-radius:20px;padding:20px;display:flex;flex-direction:column;overflow:hidden;background:radial-gradient(120% 90% at 0% 0%,color-mix(in srgb,var(--c) 85%,#fff 15%),transparent 60%),radial-gradient(100% 100% at 100% 100%,color-mix(in srgb,var(--c) 60%,#ffffff 40%),transparent 60%),color-mix(in srgb,var(--c) 55%,#000);box-shadow:0 24px 50px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.12);transform:rotateX(8deg);transition:filter .3s}
 .bk-card::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,.05) 0 2px,transparent 2px 14px);pointer-events:none}
 .bk-card-top{display:flex;justify-content:space-between;align-items:center;font-size:18px}
 .bk-chip{width:42px;height:32px;border-radius:7px;background:linear-gradient(135deg,#f1dd9a,#b8973e);margin:auto 0 14px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)}
@@ -188,7 +188,7 @@ body.phone-mode .bk{background:var(--bg)}
 .bk-note{color:var(--mut);font-size:12px;text-align:center;margin-top:6px}
 /* profil */
 .bk-prof{text-align:center;padding:10px 0 20px}
-.bk-prof i{width:84px;height:84px;border-radius:50%;margin:0 auto 12px;display:grid;place-items:center;font:800 30px Inter,sans-serif;font-style:normal;background:linear-gradient(135deg,var(--c),color-mix(in srgb,var(--c) 50%,#ff4fd8))}
+.bk-prof i{width:84px;height:84px;border-radius:50%;margin:0 auto 12px;display:grid;place-items:center;font:800 30px Inter,sans-serif;font-style:normal;background:linear-gradient(135deg,var(--c),color-mix(in srgb,var(--c) 50%,#ffffff))}
 .bk-prof h3{font-size:20px}.bk-prof small{color:var(--mut)}
 /* bas d'écran */
 .bk-simbar{flex:none;text-align:center;font:600 11px Inter,sans-serif;letter-spacing:.03em;color:#9aa0b2;background:var(--bg);border-top:1px solid var(--line);padding:6px}
@@ -374,6 +374,67 @@ section.wrap{padding:100px 20px 10px}
 :where(#home) .tag.gold{background:linear-gradient(135deg,#f5c96a,#e58a2b);color:#1a1205}
 :where(#home) .prices.one{grid-template-columns:minmax(0,460px);justify-content:center}
 :where(#home) .prices.one .price.hot{transform:none}
+:where(#home) /* ===================== DA premium : noir,:where(#home) ivoire,:where(#home) champagne ===================== */
+:root{--txt:#f3efe7;--mut:#9d998f;--v:#d8c3a0;--p:#b89a6a;--cy:#f3efe7;--ok:#8fd3ad;--gold:#c9ad7f}
+:where(#home){color:var(--txt)}
+:where(#home) .bg i{background:#fff!important;opacity:.045!important;filter:blur(140px)}
+:where(#home) .bg .b2{background:var(--gold)!important;opacity:.06!important}
+:where(#home) .grain{opacity:.035}
+:where(#home) /* Typographie */
+h1,:where(#home) h2{font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-.025em}
+:where(#home) h1{font-size:clamp(56px,8.4vw,116px);line-height:.92;margin:26px 0 26px}
+:where(#home) h2{font-size:clamp(42px,5.6vw,72px);line-height:1}
+:where(#home) h3{font-weight:600;letter-spacing:-.01em}
+:where(#home) .grad{font-style:italic;background:linear-gradient(100deg,#f3efe7 0%,#c9ad7f 45%,#f3efe7 90%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+:where(#home) .lead{color:var(--mut)}
+:where(#home) .lead b{color:var(--txt);font-weight:600}
+:where(#home) .eyebrow{font:500 11px 'JetBrains Mono',monospace;letter-spacing:.3em;color:var(--gold)}
+:where(#home) .chip{font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#cfc9bd}
+:where(#home) .dot{background:var(--gold);box-shadow:0 0 0 4px rgba(201,173,127,.18)}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(201,173,127,0)}}
+:where(#home) /* Verre plus sobre */
+.glass{border-radius:20px;background:linear-gradient(140deg,rgba(255,255,255,.075),rgba(255,255,255,.015) 60%)}
+:where(#home) .glass::before{background:linear-gradient(140deg,rgba(255,255,255,.45),rgba(255,255,255,.05) 35%,rgba(255,255,255,0) 60%,rgba(255,255,255,.18))}
+:where(#home) .glass::after{background:radial-gradient(380px circle at var(--mx,50%) var(--my,-20%),rgba(255,255,255,.07),transparent 45%)}
+:where(#home) .nav{border-radius:16px}
+:where(#home) /* Boutons */
+.btn{border-radius:12px;background:var(--txt);color:#0b0b0c!important;font-weight:600;box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 10px 30px rgba(0,0,0,.4)}
+:where(#home) .btn:hover{box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 14px 40px rgba(243,239,231,.12)}
+:where(#home) .btn.ghost{background:transparent;color:var(--txt)!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
+:where(#home) .btn.ghost:hover{box-shadow:inset 0 0 0 1px rgba(255,255,255,.45)}
+:where(#home) /* Marque */
+.brand{font-weight:700;letter-spacing:-.01em}
+:where(#home) .brand em{border-color:rgba(255,255,255,.14);color:var(--mut)}
+:where(#home) /* Hero */
+.stats b{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:34px;letter-spacing:-.01em}
+:where(#home) .stats span{text-transform:uppercase;letter-spacing:.12em;font-size:11px}
+:where(#home) .halo{background:radial-gradient(circle,rgba(243,239,231,.9),rgba(201,173,127,.5) 45%,transparent 70%);opacity:.14;animation:none}
+:where(#home) .float{border-radius:14px}
+:where(#home) .float i{border-radius:10px}
+:where(#home) .ok{background:rgba(143,211,173,.12);color:var(--ok)}
+:where(#home) .vi,:where(#home) .pk{background:rgba(255,255,255,.07);color:var(--gold)}
+:where(#home) .float strong{color:var(--ok)}
+:where(#home) /* Cartes */
+.em{width:auto;height:auto;background:none;box-shadow:none;font:500 13px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--gold);display:block;margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.08)}
+:where(#home) .tilt:hover{transform:translateY(-3px)}
+:where(#home) .mock-bal{font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-.02em;background:linear-gradient(180deg,#f3efe7,rgba(243,239,231,.35));-webkit-background-clip:text;background-clip:text}
+:where(#home) .mock-pad span{border-radius:8px;background:rgba(255,255,255,.05);font-weight:500}
+:where(#home) .mock-bar i:nth-child(1){background:#f3efe7!important}
+:where(#home) .mock-bar i:nth-child(2){background:#c9ad7f!important}
+:where(#home) .mock-bar i:nth-child(3){background:#8c826f!important}
+:where(#home) .mock-bar i:nth-child(4){background:#5c574d!important}
+:where(#home) .mock-bar i:nth-child(5){background:#3a3731!important}
+:where(#home) .how li::before{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:52px;background:none;-webkit-text-fill-color:var(--gold);color:var(--gold)}
+:where(#home) /* Tarifs */
+.price.hot{background:linear-gradient(160deg,rgba(201,173,127,.12),rgba(255,255,255,.02) 60%)}
+:where(#home) .tag{background:transparent;border:1px solid rgba(201,173,127,.5);color:var(--gold);letter-spacing:.14em}
+:where(#home) .amt{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:64px;letter-spacing:-.02em}
+:where(#home) .price li::before{content:'—';color:var(--gold);font-weight:400}
+:where(#home) summary::after{font-weight:300}
+:where(#home) .final{border-radius:24px;background:linear-gradient(140deg,rgba(201,173,127,.1),rgba(255,255,255,.02))}
+:where(#home) .foot span:first-child{font-weight:500}
+:where(#home) .bento article:last-child{grid-column:span 2}
+@media(max-width:960px){:where(#home) .bento article:last-child{grid-column:auto}}
 
 
 
@@ -423,7 +484,7 @@ section.wrap{padding:100px 20px 10px}
     <feGaussianBlur in="n" stdDeviation="2" result="nb"/>
     <feDisplacementMap in="SourceGraphic" in2="nb" scale="38" xChannelSelector="R" yChannelSelector="G"/>
   </filter>
-  <symbol id="nb-logo" viewBox="0 0 48 48"><defs><linearGradient id="lgl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b5bf7"/><stop offset="1" stop-color="#ff4fd8"/></linearGradient></defs><rect width="48" height="48" rx="14" fill="url(#lgl)"/><path d="M14 35V15l19 19V15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 6l1.5 4.5L44 12l-4.5 1.5L38 18l-1.5-4.5L32 12l4.5-1.5z" fill="#fff"/></symbol>
+  <symbol id="nb-logo" viewBox="0 0 48 48"><rect width="48" height="48" rx="13" fill="#f3efe7"/><path d="M14 35V15l19 19V15" fill="none" stroke="#0b0b0c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 6l1.5 4.5L44 12l-4.5 1.5L38 18l-1.5-4.5L32 12l4.5-1.5z" fill="#b89a6a"/></symbol>
 </svg>
 <div class="bg" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i><i class="b4"></i><span class="grain"></span></div>
 
@@ -450,10 +511,10 @@ section.wrap{padding:100px 20px 10px}
   <p class="eyebrow">Usages</p>
   <h2>Une appli, mille histoires.</h2>
   <div class="uses">
-    <article class="glass tilt"><span class="em">😈</span><h3>Blagues</h3><p>« Mamie t’a viré 500 € » : déclenche le virement en direct sous les yeux de ta victime.</p></article>
-    <article class="glass tilt"><span class="em">📱</span><h3>Sketchs & vidéos</h3><p>TikTok, Reels, Shorts : une appli réaliste pour tes sketchs, sans jamais montrer ta vraie banque.</p></article>
-    <article class="glass tilt"><span class="em">💡</span><h3>Storytelling</h3><p>La fin de mois difficile, le virement surprise, le budget vacances : raconte ton histoire.</p></article>
-    <article class="glass tilt"><span class="em">🎓</span><h3>Tutos budget</h3><p>Explique comment gérer ses dépenses avec des catégories claires et des chiffres inventés.</p></article>
+    <article class="glass tilt"><span class="em">01</span><h3>Blagues</h3><p>« Mamie t’a viré 500 € » : déclenche le virement en direct sous les yeux de ta victime.</p></article>
+    <article class="glass tilt"><span class="em">02</span><h3>Sketchs & vidéos</h3><p>TikTok, Reels, Shorts : une appli réaliste pour tes sketchs, sans jamais montrer ta vraie banque.</p></article>
+    <article class="glass tilt"><span class="em">03</span><h3>Storytelling</h3><p>La fin de mois difficile, le virement surprise, le budget vacances : raconte ton histoire.</p></article>
+    <article class="glass tilt"><span class="em">04</span><h3>Tutos budget</h3><p>Explique comment gérer ses dépenses avec des catégories claires et des chiffres inventés.</p></article>
   </div>
 </section>
 
@@ -498,7 +559,7 @@ section.wrap{padding:100px 20px 10px}
 </section>
 
 <section class="wrap">
-  <div class="final glass liquid">
+  <div class="final glass">
     <h2>Ton compte fictif t’attend.</h2>
     <p>Personnalise-le en 30 secondes et lance ta première vidéo.</p>
     <a class="btn" href="#" data-open="bank">Ouvrir Nanobank</a>
@@ -670,7 +731,7 @@ const P = {
   piggy: 'M5 11a6 6 0 0 1 6-5h3a6 6 0 0 1 6 6v1l1 1v3h-2l-1 3h-3v-2h-4v2H8l-1-3a5 5 0 0 1-2-4M15 10h.01',
 };
 // Logo Nanobank : un N blanc + une étoile (la « nova ») sur fond dégradé
-const LOGO = (size = 24) => `<svg class="bk-logo" width="${size}" height="${size}" viewBox="0 0 48 48"><defs><linearGradient id="nbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--c)"/><stop offset="1" stop-color="#ff4fd8"/></linearGradient></defs><rect width="48" height="48" rx="14" fill="url(#nbg)"/><path d="M14 35V15l19 19V15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 6l1.5 4.5L44 12l-4.5 1.5L38 18l-1.5-4.5L32 12l4.5-1.5z" fill="#fff"/></svg>`;
+const LOGO = (size = 24) => `<svg class="bk-logo" width="${size}" height="${size}" viewBox="0 0 48 48"><defs><linearGradient id="nbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--c)"/><stop offset="1" style="stop-color:color-mix(in srgb,var(--c) 45%,#fff)"/></linearGradient></defs><rect width="48" height="48" rx="14" fill="url(#nbg)"/><path d="M14 35V15l19 19V15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 6l1.5 4.5L44 12l-4.5 1.5L38 18l-1.5-4.5L32 12l4.5-1.5z" fill="#fff"/></svg>`;
 const ic = (k, cls = '') => `<svg class="ico ${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${P[k]}"/></svg>`;
 
 // ---- Catégories de dépenses ----
@@ -1100,7 +1161,7 @@ function showHome(on) {
   if (on && !heroInst) {
     const m = document.getElementById('heroMini');
     m.innerHTML = '';
-    heroInst = T_bank.mount(m, Object.fromEntries(T_bank.schema.map(f => [f.key, f.default])));
+    heroInst = T_bank.mount(m, { ...Object.fromEntries(T_bank.schema.map(f => [f.key, f.default])), color: '#8a7350' });
     const fit = () => m.style.transform = `scale(${m.parentElement.clientWidth / 420})`;
     new ResizeObserver(fit).observe(m.parentElement); fit();
   }

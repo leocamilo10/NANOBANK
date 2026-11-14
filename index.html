@@ -6,7 +6,7 @@
 <title>Nanobank Simulator</title>
 <meta name="description" content="Nanobank, la néobanque qui n’existe pas : une appli bancaire fictive plus vraie que nature pour tes blagues, tes sketchs et ton contenu sur les réseaux sociaux.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
@@ -22,7 +22,7 @@
     <feGaussianBlur in="n" stdDeviation="2" result="nb"/>
     <feDisplacementMap in="SourceGraphic" in2="nb" scale="38" xChannelSelector="R" yChannelSelector="G"/>
   </filter>
-  <symbol id="nb-logo" viewBox="0 0 48 48"><defs><linearGradient id="lgl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b5bf7"/><stop offset="1" stop-color="#ff4fd8"/></linearGradient></defs><rect width="48" height="48" rx="14" fill="url(#lgl)"/><path d="M14 35V15l19 19V15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 6l1.5 4.5L44 12l-4.5 1.5L38 18l-1.5-4.5L32 12l4.5-1.5z" fill="#fff"/></symbol>
+  <symbol id="nb-logo" viewBox="0 0 48 48"><rect width="48" height="48" rx="13" fill="#f3efe7"/><path d="M14 35V15l19 19V15" fill="none" stroke="#0b0b0c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 6l1.5 4.5L44 12l-4.5 1.5L38 18l-1.5-4.5L32 12l4.5-1.5z" fill="#b89a6a"/></symbol>
 </svg>
 <div class="bg" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i><i class="b4"></i><span class="grain"></span></div>
 
@@ -37,7 +37,7 @@
   <div class="hero-vis">
     <div class="halo"></div>
     <div class="phone-wrap">
-    <div class="hero-shot"><iframe src="app.html#t=bank&embed=1" title="Aperçu Nanobank" loading="lazy" tabindex="-1"></iframe></div>
+    <div class="hero-shot"><iframe src="app.html#t=bank&embed=1&color=%238a7350" title="Aperçu Nanobank" loading="lazy" tabindex="-1"></iframe></div>
       <div class="float f1 glass"><i class="ok">↙</i><div><b>Virement reçu</b><small>Mamie · à l’instant</small></div><strong>+500,00 €</strong></div>
       <div class="float f2 glass"><i class="vi">◔</i><div><b>Dépenses du mois</b><small>−12 % vs octobre</small></div></div>
       <div class="float f3 glass"><i class="pk">✦</i><div><b>Personnalisable</b><small>solde, noms, couleurs</small></div></div>
@@ -49,10 +49,10 @@
   <p class="eyebrow">Usages</p>
   <h2>Une appli, mille histoires.</h2>
   <div class="uses">
-    <article class="glass tilt"><span class="em">😈</span><h3>Blagues</h3><p>« Mamie t’a viré 500 € » : déclenche le virement en direct sous les yeux de ta victime.</p></article>
-    <article class="glass tilt"><span class="em">📱</span><h3>Sketchs & vidéos</h3><p>TikTok, Reels, Shorts : une appli réaliste pour tes sketchs, sans jamais montrer ta vraie banque.</p></article>
-    <article class="glass tilt"><span class="em">💡</span><h3>Storytelling</h3><p>La fin de mois difficile, le virement surprise, le budget vacances : raconte ton histoire.</p></article>
-    <article class="glass tilt"><span class="em">🎓</span><h3>Tutos budget</h3><p>Explique comment gérer ses dépenses avec des catégories claires et des chiffres inventés.</p></article>
+    <article class="glass tilt"><span class="em">01</span><h3>Blagues</h3><p>« Mamie t’a viré 500 € » : déclenche le virement en direct sous les yeux de ta victime.</p></article>
+    <article class="glass tilt"><span class="em">02</span><h3>Sketchs & vidéos</h3><p>TikTok, Reels, Shorts : une appli réaliste pour tes sketchs, sans jamais montrer ta vraie banque.</p></article>
+    <article class="glass tilt"><span class="em">03</span><h3>Storytelling</h3><p>La fin de mois difficile, le virement surprise, le budget vacances : raconte ton histoire.</p></article>
+    <article class="glass tilt"><span class="em">04</span><h3>Tutos budget</h3><p>Explique comment gérer ses dépenses avec des catégories claires et des chiffres inventés.</p></article>
   </div>
 </section>
 
@@ -97,7 +97,7 @@
 </section>
 
 <section class="wrap">
-  <div class="final glass liquid">
+  <div class="final glass">
     <h2>Ton compte fictif t’attend.</h2>
     <p>Personnalise-le en 30 secondes et lance ta première vidéo.</p>
     <a class="btn" href="app.html#t=bank">Ouvrir Nanobank</a>

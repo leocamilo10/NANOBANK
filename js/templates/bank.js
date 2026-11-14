@@ -40,7 +40,7 @@ const P = {
   piggy: 'M5 11a6 6 0 0 1 6-5h3a6 6 0 0 1 6 6v1l1 1v3h-2l-1 3h-3v-2h-4v2H8l-1-3a5 5 0 0 1-2-4M15 10h.01',
 };
 // Logo Nanobank : un N blanc + une étoile (la « nova ») sur fond dégradé
-const LOGO = (size = 24) => `<svg class="bk-logo" width="${size}" height="${size}" viewBox="0 0 48 48"><defs><linearGradient id="nbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--c)"/><stop offset="1" stop-color="#ff4fd8"/></linearGradient></defs><rect width="48" height="48" rx="14" fill="url(#nbg)"/><path d="M14 35V15l19 19V15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 6l1.5 4.5L44 12l-4.5 1.5L38 18l-1.5-4.5L32 12l4.5-1.5z" fill="#fff"/></svg>`;
+const LOGO = (size = 24) => `<svg class="bk-logo" width="${size}" height="${size}" viewBox="0 0 48 48"><defs><linearGradient id="nbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--c)"/><stop offset="1" style="stop-color:color-mix(in srgb,var(--c) 45%,#fff)"/></linearGradient></defs><rect width="48" height="48" rx="14" fill="url(#nbg)"/><path d="M14 35V15l19 19V15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 6l1.5 4.5L44 12l-4.5 1.5L38 18l-1.5-4.5L32 12l4.5-1.5z" fill="#fff"/></svg>`;
 const ic = (k, cls = '') => `<svg class="ico ${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${P[k]}"/></svg>`;
 
 // ---- Catégories de dépenses ----

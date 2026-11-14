@@ -123,3 +123,59 @@ details p{color:var(--mut);margin-top:12px}
 .tag.gold{background:linear-gradient(135deg,#f5c96a,#e58a2b);color:#1a1205}
 .prices.one{grid-template-columns:minmax(0,460px);justify-content:center}
 .prices.one .price.hot{transform:none}
+
+/* ===================== DA premium : noir, ivoire, champagne ===================== */
+:root{--txt:#f3efe7;--mut:#9d998f;--v:#d8c3a0;--p:#b89a6a;--cy:#f3efe7;--ok:#8fd3ad;--gold:#c9ad7f}
+body{color:var(--txt)}
+.bg i{background:#fff!important;opacity:.045!important;filter:blur(140px)}
+.bg .b2{background:var(--gold)!important;opacity:.06!important}
+.grain{opacity:.035}
+/* Typographie */
+h1,h2{font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-.025em}
+h1{font-size:clamp(56px,8.4vw,116px);line-height:.92;margin:26px 0 26px}
+h2{font-size:clamp(42px,5.6vw,72px);line-height:1}
+h3{font-weight:600;letter-spacing:-.01em}
+.grad{font-style:italic;background:linear-gradient(100deg,#f3efe7 0%,#c9ad7f 45%,#f3efe7 90%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+.lead{color:var(--mut)}.lead b{color:var(--txt);font-weight:600}
+.eyebrow{font:500 11px 'JetBrains Mono',monospace;letter-spacing:.3em;color:var(--gold)}
+.chip{font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#cfc9bd}
+.dot{background:var(--gold);box-shadow:0 0 0 4px rgba(201,173,127,.18)}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(201,173,127,0)}}
+/* Verre plus sobre */
+.glass{border-radius:20px;background:linear-gradient(140deg,rgba(255,255,255,.075),rgba(255,255,255,.015) 60%)}
+.glass::before{background:linear-gradient(140deg,rgba(255,255,255,.45),rgba(255,255,255,.05) 35%,rgba(255,255,255,0) 60%,rgba(255,255,255,.18))}
+.glass::after{background:radial-gradient(380px circle at var(--mx,50%) var(--my,-20%),rgba(255,255,255,.07),transparent 45%)}
+.nav{border-radius:16px}
+/* Boutons */
+.btn{border-radius:12px;background:var(--txt);color:#0b0b0c!important;font-weight:600;box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 10px 30px rgba(0,0,0,.4)}
+.btn:hover{box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 14px 40px rgba(243,239,231,.12)}
+.btn.ghost{background:transparent;color:var(--txt)!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
+.btn.ghost:hover{box-shadow:inset 0 0 0 1px rgba(255,255,255,.45)}
+/* Marque */
+.brand{font-weight:700;letter-spacing:-.01em}
+.brand em{border-color:rgba(255,255,255,.14);color:var(--mut)}
+/* Hero */
+.stats b{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:34px;letter-spacing:-.01em}
+.stats span{text-transform:uppercase;letter-spacing:.12em;font-size:11px}
+.halo{background:radial-gradient(circle,rgba(243,239,231,.9),rgba(201,173,127,.5) 45%,transparent 70%);opacity:.14;animation:none}
+.float{border-radius:14px}
+.float i{border-radius:10px}
+.ok{background:rgba(143,211,173,.12);color:var(--ok)}.vi,.pk{background:rgba(255,255,255,.07);color:var(--gold)}
+.float strong{color:var(--ok)}
+/* Cartes */
+.em{width:auto;height:auto;background:none;box-shadow:none;font:500 13px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--gold);display:block;margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.tilt:hover{transform:translateY(-3px)}
+.mock-bal{font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-.02em;background:linear-gradient(180deg,#f3efe7,rgba(243,239,231,.35));-webkit-background-clip:text;background-clip:text}
+.mock-pad span{border-radius:8px;background:rgba(255,255,255,.05);font-weight:500}
+.mock-bar i:nth-child(1){background:#f3efe7!important}.mock-bar i:nth-child(2){background:#c9ad7f!important}.mock-bar i:nth-child(3){background:#8c826f!important}.mock-bar i:nth-child(4){background:#5c574d!important}.mock-bar i:nth-child(5){background:#3a3731!important}
+.how li::before{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:52px;background:none;-webkit-text-fill-color:var(--gold);color:var(--gold)}
+/* Tarifs */
+.price.hot{background:linear-gradient(160deg,rgba(201,173,127,.12),rgba(255,255,255,.02) 60%)}
+.tag{background:transparent;border:1px solid rgba(201,173,127,.5);color:var(--gold);letter-spacing:.14em}
+.amt{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:64px;letter-spacing:-.02em}
+.price li::before{content:'—';color:var(--gold);font-weight:400}
+summary::after{font-weight:300}
+.final{border-radius:24px;background:linear-gradient(140deg,rgba(201,173,127,.1),rgba(255,255,255,.02))}
+.foot span:first-child{font-weight:500}
+.bento article:last-child{grid-column:span 2}
+@media(max-width:960px){.bento article:last-child{grid-column:auto}}

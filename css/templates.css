@@ -32,7 +32,7 @@ body.phone-mode .bk{background:var(--bg)}
 .bk-view.on{display:block;animation:bkin .28s cubic-bezier(.2,.8,.2,1)}
 @keyframes bkin{from{opacity:0;transform:translateX(18px)}}
 .bk-view[data-v="home"]{padding-top:50px}
-.bk-glow{position:absolute;left:-20%;right:-20%;top:-120px;height:520px;background:radial-gradient(60% 55% at 30% 40%,color-mix(in srgb,var(--c) 90%,#fff 10%),transparent 70%),radial-gradient(50% 50% at 80% 30%,color-mix(in srgb,var(--c) 70%,#ff4fd8 30%),transparent 70%),radial-gradient(70% 60% at 50% 70%,color-mix(in srgb,var(--c) 50%,#000),transparent 80%);opacity:.9;filter:blur(10px);pointer-events:none;z-index:0}
+.bk-glow{position:absolute;left:-20%;right:-20%;top:-120px;height:520px;background:radial-gradient(60% 55% at 30% 40%,color-mix(in srgb,var(--c) 90%,#fff 10%),transparent 70%),radial-gradient(50% 50% at 80% 30%,color-mix(in srgb,var(--c) 70%,#ffffff 30%),transparent 70%),radial-gradient(70% 60% at 50% 70%,color-mix(in srgb,var(--c) 50%,#000),transparent 80%);opacity:.9;filter:blur(10px);pointer-events:none;z-index:0}
 .bk-view[data-v="home"]>*:not(.bk-glow){position:relative;z-index:1}
 /* en-tête accueil */
 .bk-top{display:flex;align-items:center;gap:10px}
@@ -115,7 +115,7 @@ body.phone-mode .bk{background:var(--bg)}
 .bk-cardactions .ico{width:50px;height:50px;padding:14px;border-radius:50%;background:var(--card)}
 /* carte */
 .bk-cardwrap{perspective:900px;margin:6px 4px 18px}
-.bk-card{position:relative;aspect-ratio:1.586;border-radius:20px;padding:20px;display:flex;flex-direction:column;overflow:hidden;background:radial-gradient(120% 90% at 0% 0%,color-mix(in srgb,var(--c) 85%,#fff 15%),transparent 60%),radial-gradient(100% 100% at 100% 100%,color-mix(in srgb,var(--c) 60%,#ff4fd8 40%),transparent 60%),color-mix(in srgb,var(--c) 55%,#000);box-shadow:0 24px 50px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.12);transform:rotateX(8deg);transition:filter .3s}
+.bk-card{position:relative;aspect-ratio:1.586;border-radius:20px;padding:20px;display:flex;flex-direction:column;overflow:hidden;background:radial-gradient(120% 90% at 0% 0%,color-mix(in srgb,var(--c) 85%,#fff 15%),transparent 60%),radial-gradient(100% 100% at 100% 100%,color-mix(in srgb,var(--c) 60%,#ffffff 40%),transparent 60%),color-mix(in srgb,var(--c) 55%,#000);box-shadow:0 24px 50px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.12);transform:rotateX(8deg);transition:filter .3s}
 .bk-card::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,.05) 0 2px,transparent 2px 14px);pointer-events:none}
 .bk-card-top{display:flex;justify-content:space-between;align-items:center;font-size:18px}
 .bk-chip{width:42px;height:32px;border-radius:7px;background:linear-gradient(135deg,#f1dd9a,#b8973e);margin:auto 0 14px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)}
@@ -134,7 +134,7 @@ body.phone-mode .bk{background:var(--bg)}
 .bk-note{color:var(--mut);font-size:12px;text-align:center;margin-top:6px}
 /* profil */
 .bk-prof{text-align:center;padding:10px 0 20px}
-.bk-prof i{width:84px;height:84px;border-radius:50%;margin:0 auto 12px;display:grid;place-items:center;font:800 30px Inter,sans-serif;font-style:normal;background:linear-gradient(135deg,var(--c),color-mix(in srgb,var(--c) 50%,#ff4fd8))}
+.bk-prof i{width:84px;height:84px;border-radius:50%;margin:0 auto 12px;display:grid;place-items:center;font:800 30px Inter,sans-serif;font-style:normal;background:linear-gradient(135deg,var(--c),color-mix(in srgb,var(--c) 50%,#ffffff))}
 .bk-prof h3{font-size:20px}.bk-prof small{color:var(--mut)}
 /* bas d'écran */
 .bk-simbar{flex:none;text-align:center;font:600 11px Inter,sans-serif;letter-spacing:.03em;color:#9aa0b2;background:var(--bg);border-top:1px solid var(--line);padding:6px}

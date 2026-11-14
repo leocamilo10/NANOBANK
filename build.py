@@ -34,7 +34,7 @@ function showHome(on) {
   if (on && !heroInst) {
     const m = document.getElementById('heroMini');
     m.innerHTML = '';
-    heroInst = T_bank.mount(m, Object.fromEntries(T_bank.schema.map(f => [f.key, f.default])));
+    heroInst = T_bank.mount(m, { ...Object.fromEntries(T_bank.schema.map(f => [f.key, f.default])), color: '#8a7350' });
     const fit = () => m.style.transform = `scale(${m.parentElement.clientWidth / 420})`;
     new ResizeObserver(fit).observe(m.parentElement); fit();
   }
@@ -105,7 +105,7 @@ out = f'''<!doctype html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Nanobank Simulator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
 {read('css/app.css')}
 {read('css/templates.css')}
