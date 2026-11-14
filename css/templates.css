@@ -185,3 +185,7 @@ body.phone-mode .bk{background:var(--bg)}
 /* Une seule police pour tous les chiffres de l'appli bancaire */
 .bk,.bk *{font-family:Inter,system-ui,sans-serif!important;font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1,"cv11" 1}
 .bk-card-num{letter-spacing:.14em;font-weight:600}
+
+/* Aperçu sur la landing */
+body.embed .bk{background:transparent}
+body.embed .bk-phone{width:100%;height:100%;box-shadow:none;border-radius:46px}

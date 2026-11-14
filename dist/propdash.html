@@ -50,6 +50,7 @@ body:not(.nopanel) #open{display:none}
 body.phone-mode #wm{display:none}
 .btns button[hidden]{display:none}
 body.phone-mode #open{top:auto;bottom:96px;right:6px;width:28px;height:28px;font-size:13px;opacity:.15}
+html:has(body.embed),body.embed{background:transparent}
 
 /* ---------- Surimpression commune ---------- */
 .ov{position:absolute;inset:0;display:none;place-items:center;z-index:20;pointer-events:none;background:rgba(0,0,0,.45)}
@@ -239,6 +240,10 @@ body.phone-mode .bk{background:var(--bg)}
 .bk,.bk *{font-family:Inter,system-ui,sans-serif!important;font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1,"cv11" 1}
 .bk-card-num{letter-spacing:.14em;font-weight:600}
 
+/* Aperçu sur la landing */
+body.embed .bk{background:transparent}
+body.embed .bk-phone{width:100%;height:100%;box-shadow:none;border-radius:46px}
+
 :where(#home) *{box-sizing:border-box;margin:0;padding:0}
 :where(#home){--bg:#000;--txt:#f2f3f8;--mut:#bcc0d2;--v:#5b5bf7;--p:#ff4fd8;--cy:#33d1ff;--ok:#3ddc97}
 :where(#home){background:var(--bg);color:var(--txt);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:hidden}
@@ -287,10 +292,12 @@ body.phone-mode .bk{background:var(--bg)}
 :where(#home) .hero-vis{position:relative;display:flex;justify-content:center}
 :where(#home) .halo{position:absolute;width:420px;height:420px;border-radius:50%;background:conic-gradient(from 0deg,var(--v),var(--p),var(--cy),var(--v));filter:blur(70px);opacity:.5;top:50%;left:50%;transform:translate(-50%,-50%);animation:spin 18s linear infinite}
 @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
-:where(#home) .hero-shot{position:relative;width:min(360px,80vw);aspect-ratio:420/860;border-radius:46px;overflow:hidden;transform:perspective(1200px) rotateY(-10deg) rotateX(4deg);box-shadow:0 50px 120px rgba(0,0,0,.6);animation:float 7s ease-in-out infinite}
+:where(#home) .phone-wrap{position:relative;width:min(360px,80vw);animation:float 7s ease-in-out infinite}
+:where(#home) .hero-shot{position:relative;width:100%;aspect-ratio:420/860;border-radius:46px;overflow:hidden;transform:perspective(1400px) rotateY(-6deg) rotateX(3deg);box-shadow:0 50px 120px rgba(0,0,0,.6)}
 :where(#home) .hero-shot iframe,:where(#home) .hero-shot .mini{position:absolute;top:0;left:0;width:420px;height:860px;border:0;transform-origin:0 0;pointer-events:none}
 @keyframes float{50%{translate:0 -14px}}
-:where(#home) .float{position:absolute;display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:20px;font-size:13px;white-space:nowrap;animation:float 6s ease-in-out infinite}
+:where(#home) .float{position:absolute;z-index:3;display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:20px;font-size:13px;white-space:nowrap;background:linear-gradient(135deg,rgba(40,40,58,.72),rgba(18,18,28,.62))!important;-webkit-backdrop-filter:blur(28px) saturate(180%);backdrop-filter:blur(28px) saturate(180%);animation:bob 6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px)}}
 :where(#home) .float i{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;font-style:normal;font-weight:800}
 :where(#home) .float b{display:block;font-size:14px}
 :where(#home) .float small{color:var(--mut)}
@@ -298,9 +305,11 @@ body.phone-mode .bk{background:var(--bg)}
 :where(#home) .ok{background:rgba(61,220,151,.18);color:var(--ok)}
 :where(#home) .vi{background:rgba(91,91,247,.25);color:#b7b5ff}
 :where(#home) .pk{background:rgba(255,79,216,.2);color:#ffa6ec}
-:where(#home) .f1{top:10%;left:-14%;animation-delay:-1s}
-:where(#home) .f2{bottom:22%;right:-12%;animation-delay:-3s}
-:where(#home) .f3{bottom:6%;left:-6%;animation-delay:-4.5s}
+:where(#home) .f1{top:15%;right:calc(100% - 22px);animation-delay:-1s}
+:where(#home) .f2{top:54%;left:calc(100% - 22px);animation-delay:-3s}
+:where(#home) .f3{bottom:9%;right:calc(100% - 18px);animation-delay:-4.5s}
+@media(max-width:1380px){:where(#home) .f2{display:none}}
+@media(max-width:1240px){:where(#home) .f3{display:none}}
 :where(#home) /* ---------- Sections ---------- */
 section.wrap{padding:100px 20px 10px}
 :where(#home) .eyebrow{font:700 12px 'JetBrains Mono',monospace;letter-spacing:.25em;text-transform:uppercase;color:#b7b5ff;margin-bottom:12px}
@@ -350,9 +359,8 @@ section.wrap{padding:100px 20px 10px}
 :where(#home) .bento,:where(#home) .prices,:where(#home) .how ol{grid-template-columns:1fr}
 :where(#home) .bento .big{grid-row:auto}
 :where(#home) .links{display:none}
-:where(#home) .f1{left:-2%}
-:where(#home) .f2{right:-2%}
 :where(#home) .price.hot{transform:none}
+:where(#home) .float{display:none}
 
 }
 @media(max-width:560px){:where(#home) .uses{grid-template-columns:1fr}
@@ -429,10 +437,12 @@ section.wrap{padding:100px 20px 10px}
   </div>
   <div class="hero-vis">
     <div class="halo"></div>
+    <div class="phone-wrap">
     <div class="hero-shot"><div class="mini" id="heroMini"></div></div>
-    <div class="float f1 glass"><i class="ok">↙</i><div><b>Virement reçu</b><small>Mamie · à l’instant</small></div><strong>+500,00 €</strong></div>
-    <div class="float f2 glass"><i class="vi">◔</i><div><b>Dépenses du mois</b><small>−12 % vs octobre</small></div></div>
-    <div class="float f3 glass"><i class="pk">✦</i><div><b>Personnalisable</b><small>solde, noms, couleurs</small></div></div>
+      <div class="float f1 glass"><i class="ok">↙</i><div><b>Virement reçu</b><small>Mamie · à l’instant</small></div><strong>+500,00 €</strong></div>
+      <div class="float f2 glass"><i class="vi">◔</i><div><b>Dépenses du mois</b><small>−12 % vs octobre</small></div></div>
+      <div class="float f3 glass"><i class="pk">✦</i><div><b>Personnalisable</b><small>solde, noms, couleurs</small></div></div>
+    </div>
   </div>
 </header>
 

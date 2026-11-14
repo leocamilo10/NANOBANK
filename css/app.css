@@ -41,3 +41,4 @@ body:not(.nopanel) #open{display:none}
 body.phone-mode #wm{display:none}
 .btns button[hidden]{display:none}
 body.phone-mode #open{top:auto;bottom:96px;right:6px;width:28px;height:28px;font-size:13px;opacity:.15}
+html:has(body.embed),body.embed{background:transparent}
