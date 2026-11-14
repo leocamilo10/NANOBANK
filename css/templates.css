@@ -250,3 +250,12 @@ body.embed .bk-phone{width:100%;height:100%;box-shadow:none;border-radius:46px}
 .bk[data-bg="uni"] .bk-view[data-v="home"]{background:linear-gradient(180deg,var(--c) 0,var(--c) 46%,var(--bg) 70%)}
 .bk[data-bg="uni"] .bk-glow{display:none}
 @media (prefers-reduced-motion:reduce){.bk-glow{animation:none!important}}
+
+/* Mention de simulation : une ligne minuscule sous les onglets, fondue dans la barre */
+.bk-tabs{order:1;padding-bottom:2px}
+.bk-simbar{order:2;border:0;background:rgba(16,17,23,.96);color:#666a77;font:500 8.5px/1 Inter,system-ui,sans-serif!important;letter-spacing:.03em;padding:3px 0 max(10px,env(safe-area-inset-bottom))}
+.bk-notif{order:3}
+/* Rubrique « À propos » dans Profil */
+.bk-about{padding:14px 16px}
+.bk-about b{display:block;font-size:15px;margin-bottom:6px}
+.bk-about p{color:var(--mut);font-size:13px;line-height:1.55}

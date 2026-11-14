@@ -191,9 +191,10 @@ export default {
           <div class="bk-brand">${LOGO(40)}<b>${bankName}</b></div>
           <div class="bk-panel">${link('user', 'Informations personnelles')}${link('shield', 'Sécurité et confidentialité')}${link('doc', 'Relevés et documents')}${link('bell', 'Notifications')}</div>
           <div class="bk-panel">${link('help', 'Aide')}${link('flag', 'Signaler un problème')}</div>
+          <div class="bk-panel bk-about"><b>À propos de Nanobank</b><p>Nanobank est une banque fictive. Ce compte est une simulation : le solde, les opérations, les virements et la carte n’ont aucune valeur réelle et ne permettent aucun paiement.</p></div>
         </section>
       </div>
-      <div class="bk-simbar">Compte de simulation · aucune valeur réelle</div>
+      <div class="bk-simbar">Simulation · aucune valeur réelle</div>
       <nav class="bk-tabs">
         <a data-tab="home" class="on">${ic('home')}<span>Accueil</span></a><a data-tab="tx">${ic('list')}<span>Transactions</span></a>
         <a data-tab="card">${ic('card')}<span>Cartes</span></a><a data-tab="profile">${ic('user')}<span>Profil</span></a></nav>
