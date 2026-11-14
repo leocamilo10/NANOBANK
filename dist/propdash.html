@@ -121,6 +121,12 @@ h5{color:#6f6b63}dt{color:#f3efe7}dd,.note{color:#7a766d}
 .install-tip.out{opacity:0;transform:translateY(20px);transition:.4s;pointer-events:none}
 @keyframes tipIn{from{opacity:0;transform:translateY(30px)}}
 
+/* Appli « native » : pas de rebond de page, pas de zoom au double-tap ni à la saisie */
+html,body{overscroll-behavior:none;touch-action:manipulation;-webkit-text-size-adjust:100%}
+@media (max-width:700px){
+  .fld input,.fld select,.fld textarea{font-size:16px}
+}
+
 /* ---------- Surimpression commune ---------- */
 .ov{position:absolute;inset:0;display:none;place-items:center;z-index:20;pointer-events:none;background:rgba(0,0,0,.45)}
 .ov.on{display:grid}
@@ -340,6 +346,18 @@ body.embed .bk-phone{width:100%;height:100%;box-shadow:none;border-radius:46px}
   .bk-amt{font-size:38px}
   .bk-motif{display:none}
 }
+
+/* L'écran ne glisse plus sur le côté : rien ne dépasse en largeur */
+.bk-view{overflow-x:hidden;touch-action:pan-y}
+.bk-accounts{touch-action:pan-x pan-y;overscroll-behavior-x:contain}
+.bk-motif input{font-size:16px}
+/* Notification : vraiment invisible tant qu'aucune opération n'arrive (même avec l'encoche de l'iPhone) */
+.bk-notif{visibility:hidden;opacity:0;transform:translateY(calc(-100% - env(safe-area-inset-top) - 40px));transition:transform .45s cubic-bezier(.2,1.2,.4,1),opacity .3s,visibility 0s .45s}
+.bk-notif.on{visibility:visible;opacity:1;transform:none;transition:transform .45s cubic-bezier(.2,1.2,.4,1),opacity .2s,visibility 0s}
+/* Accueil : plus aucun élément plus large que l'écran */
+.bk-glow{left:0;right:0}
+.bk-accounts{margin:0}
+.bk-acc{padding-left:0;padding-right:0}
 
 :where(#home) *{box-sizing:border-box;margin:0;padding:0}
 :where(#home){--bg:#000;--txt:#f2f3f8;--mut:#bcc0d2;--v:#5b5bf7;--p:#ff4fd8;--cy:#33d1ff;--ok:#3ddc97}
