@@ -52,6 +52,16 @@ body.phone-mode #wm{display:none}
 body.phone-mode #open{top:auto;bottom:96px;right:6px;width:28px;height:28px;font-size:13px;opacity:.15}
 html:has(body.embed),body.embed{background:transparent}
 
+/* Écran « réservé aux abonnés » */
+body.locked{background:#000;overflow:auto}
+.lock{min-height:100vh;max-width:520px;margin:0 auto;padding:40px 22px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-family:Geist,Inter,system-ui,sans-serif;color:#f3efe7}
+.lock-eyebrow{margin-top:28px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.3em;text-transform:uppercase;color:#c9ad7f}
+.lock h1{font-size:clamp(28px,6vw,40px);line-height:1.08;letter-spacing:-.04em;font-weight:600;margin:12px 0 14px}
+.lock-txt{color:#9d998f;font-size:16px;line-height:1.6;margin-bottom:30px}
+.lock-btn{display:block;width:100%;padding:16px;border-radius:12px;background:#f3efe7;color:#0b0b0c;font-weight:600;text-decoration:none}
+.lock-ghost{width:100%;margin-top:10px;padding:14px;border-radius:12px;background:none;border:1px solid #2a2a2a;color:#77736a;font:500 14px Geist,Inter,sans-serif}
+.lock-back{margin-top:26px;color:#9d998f;font-size:14px;text-decoration:none}
+
 /* ---------- Surimpression commune ---------- */
 .ov{position:absolute;inset:0;display:none;place-items:center;z-index:20;pointer-events:none;background:rgba(0,0,0,.45)}
 .ov.on{display:grid}
@@ -450,6 +460,7 @@ h1,:where(#home) h2{font-family:'Instrument Serif',Georgia,serif;font-weight:400
 :where(#home) .foot .legal{display:flex;flex-wrap:wrap;gap:18px}
 :where(#home) .foot .legal a{color:var(--mut)}
 :where(#home) .foot .legal a:hover{color:var(--txt)}
+:where(#home) .hero-shot img{display:block;width:100%;height:100%;object-fit:cover}
 
 
 
@@ -490,7 +501,7 @@ h1,:where(#home) h2{font-family:'Instrument Serif',Georgia,serif;font-weight:400
 <div id="home"><nav class="nav glass liquid">
   <a class="brand" href="#"><svg width="26" height="26" viewBox="0 0 48 48"><use href="#nb-logo"/></svg>Nanobank<em>Simulator</em></a>
   <div class="links"><a href="#usages">Usages</a><a href="#fonctions">Fonctions</a><a href="#tarifs">Tarifs</a><a href="#faq">FAQ</a></div>
-  <a class="btn sm" href="#" data-open="bank">Ouvrir l’appli</a>
+  <a class="btn sm ghost glass" href="#" data-open="bank">Se connecter</a>
 </nav>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -508,7 +519,7 @@ h1,:where(#home) h2{font-family:'Instrument Serif',Georgia,serif;font-weight:400
     <p class="chip glass"><span class="dot"></span>La néobanque qui n’existe pas</p>
     <h1>Fais vivre<br>tes idées avec<br><span class="grad">Nanobank.</span></h1>
     <p class="lead">Une appli bancaire <b>100 % fictive</b> et plus vraie que nature : solde, opérations, bénéficiaires et virements modifiables, navigable au doigt. Pour tes blagues, tes sketchs et ton contenu sur les réseaux sociaux.</p>
-    <div class="cta"><a class="btn" href="https://whop.com/nanobank/abonnement-nanobank-simulator" rel="noopener">Créer mon compte fictif</a><a class="btn ghost glass" href="#" data-open="bank">Essayer la démo</a></div>
+    <div class="cta"><a class="btn" href="https://whop.com/nanobank/abonnement-nanobank-simulator" rel="noopener">Créer mon compte fictif</a><a class="btn ghost glass" href="#fonctions">Découvrir</a></div>
     <ul class="stats"><li><b>17,90 €</b><span>par mois</span></li><li><b>30 s</b><span>pour personnaliser</span></li><li><b>100 %</b><span>fictif</span></li></ul>
   </div>
   <div class="hero-vis">
@@ -577,7 +588,7 @@ h1,:where(#home) h2{font-family:'Instrument Serif',Georgia,serif;font-weight:400
   <div class="final glass">
     <h2>Ton compte fictif t’attend.</h2>
     <p>Personnalise-le en 30 secondes et lance ta première vidéo.</p>
-    <a class="btn" href="#" data-open="bank">Ouvrir Nanobank</a>
+    <a class="btn" href="https://whop.com/nanobank/abonnement-nanobank-simulator" rel="noopener">S’abonner — 17,90 € / mois</a>
   </div>
 </section>
 
@@ -1057,7 +1068,27 @@ return {
 
 })();
 const TEMPLATES = [T_bank];
+const hasAccess = async () => true;
 
+
+
+// ---- Accès réservé aux abonnés ----
+const SUBSCRIBE_URL = 'https://whop.com/nanobank/abonnement-nanobank-simulator';
+if (!(await hasAccess())) {
+  document.title = 'Nanobank — Réservé aux abonnés';
+  document.body.className = 'locked';
+  document.body.innerHTML = `
+    <main class="lock">
+      <svg width="56" height="56" viewBox="0 0 48 48"><rect width="48" height="48" rx="13" fill="#f3efe7"/><path d="M14 35V15l19 19V15" fill="none" stroke="#0b0b0c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 6l1.5 4.5L44 12l-4.5 1.5L38 18l-1.5-4.5L32 12l4.5-1.5z" fill="#b89a6a"/></svg>
+      <p class="lock-eyebrow">Accès abonnés</p>
+      <h1>L’appli Nanobank est réservée aux abonnés.</h1>
+      <p class="lock-txt">Abonne-toi pour personnaliser ton compte fictif, passer en mode téléphone et faire vivre tes idées.</p>
+      <a class="lock-btn" href="${SUBSCRIBE_URL}" rel="noopener">S’abonner — 17,90 € / mois</a>
+      <button class="lock-ghost" disabled>J’ai déjà un abonnement · connexion bientôt disponible</button>
+      <a class="lock-back" href="index.html">← Retour à l’accueil</a>
+    </main>`;
+  await new Promise(() => {}); // l'appli ne se charge pas
+}
 
 const $ = s => document.querySelector(s);
 const params = new URLSearchParams(location.hash.slice(1));

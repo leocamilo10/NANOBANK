@@ -13,6 +13,7 @@ for n in names:
     body = strip_imports(read(f'js/templates/{n}.js')).replace('export default {', 'return {', 1)
     js.append(f'const T_{n} = (() => {{\n{body}\n}})();')
 js.append('const TEMPLATES = [T_bank];')
+js.append('const hasAccess = async () => true;')
 js.append(strip_imports(read('js/player.js')))
 
 # Page d'accueil : on garde le contenu de index.html, sans nav externe ni iframes

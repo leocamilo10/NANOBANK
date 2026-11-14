@@ -42,3 +42,13 @@ body.phone-mode #wm{display:none}
 .btns button[hidden]{display:none}
 body.phone-mode #open{top:auto;bottom:96px;right:6px;width:28px;height:28px;font-size:13px;opacity:.15}
 html:has(body.embed),body.embed{background:transparent}
+
+/* Écran « réservé aux abonnés » */
+body.locked{background:#000;overflow:auto}
+.lock{min-height:100vh;max-width:520px;margin:0 auto;padding:40px 22px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-family:Geist,Inter,system-ui,sans-serif;color:#f3efe7}
+.lock-eyebrow{margin-top:28px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.3em;text-transform:uppercase;color:#c9ad7f}
+.lock h1{font-size:clamp(28px,6vw,40px);line-height:1.08;letter-spacing:-.04em;font-weight:600;margin:12px 0 14px}
+.lock-txt{color:#9d998f;font-size:16px;line-height:1.6;margin-bottom:30px}
+.lock-btn{display:block;width:100%;padding:16px;border-radius:12px;background:#f3efe7;color:#0b0b0c;font-weight:600;text-decoration:none}
+.lock-ghost{width:100%;margin-top:10px;padding:14px;border-radius:12px;background:none;border:1px solid #2a2a2a;color:#77736a;font:500 14px Geist,Inter,sans-serif}
+.lock-back{margin-top:26px;color:#9d998f;font-size:14px;text-decoration:none}

@@ -14,3 +14,16 @@
   for = "/js/*"
   [headers.values]
     Cache-Control = "public, max-age=3600"
+
+# Fichiers internes non publiés
+[[redirects]]
+  from = "/dist/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/build.py"
+  to = "/"
+  status = 301
+  force = true
