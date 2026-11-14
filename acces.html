@@ -27,7 +27,8 @@
     'session': 'La connexion a expiré, réessaie.',
     'whop': 'Whop n’a pas répondu. Réessaie dans un instant.'
   }[new URLSearchParams(location.search).get('erreur')];
-  if (msg) { const e = document.getElementById('err'); e.textContent = msg; e.hidden = false; }
+  const d = new URLSearchParams(location.search).get('d');
+  if (msg) { const e = document.getElementById('err'); e.textContent = msg + (d ? ' (code : ' + d.replace(/[^a-zA-Z0-9_-]/g, '') + ')' : ''); e.hidden = false; }
 </script>
 </body>
 </html>

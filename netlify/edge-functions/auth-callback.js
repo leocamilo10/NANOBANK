@@ -1,11 +1,12 @@
 // Étape 2 : retour de Whop → on vérifie l'achat → on ouvre l'appli
 import { verify, sign, getCookie, setCookie, redirect, callbackUrl, OAUTH, SESSION, SESSION_HOURS } from './lib/auth.js';
-import { exchangeCode, userIdFrom, hasProductAccess } from './lib/whop.js';
+import { exchangeCode, userIdFrom, hasProductAccess, diag } from './lib/whop.js';
 
 export default async (request) => {
   const url = new URL(request.url);
   const clearOauth = setCookie(OAUTH, '', { maxAge: 0, path: '/auth' });
-  const fail = (why) => redirect(`/acces.html?erreur=${why}`, [clearOauth]);
+  diag.last = '';
+  const fail = (why) => redirect(`/acces.html?erreur=${why}${diag.last ? '&d=' + diag.last : ''}`, [clearOauth]);
 
   if (url.searchParams.get('error')) return fail('annule');
   const pending = await verify(getCookie(request, OAUTH));
