@@ -2,8 +2,11 @@
 const enc = new TextEncoder();
 const dec = new TextDecoder();
 
-export const env = (k) =>
-  globalThis.Netlify?.env?.get(k) ?? globalThis.Deno?.env?.get(k) ?? globalThis.process?.env?.[k];
+// Les espaces ou retours à la ligne collés par erreur autour des clés sont retirés
+export const env = (k) => {
+  const v = globalThis.Netlify?.env?.get(k) ?? globalThis.Deno?.env?.get(k) ?? globalThis.process?.env?.[k];
+  return typeof v === 'string' ? v.trim() || undefined : v;
+};
 
 export const SESSION = 'nb_session';   // pass d'accès à l'appli
 export const OAUTH = 'nb_oauth';       // état temporaire pendant la connexion Whop

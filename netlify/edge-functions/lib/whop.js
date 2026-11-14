@@ -8,7 +8,12 @@ export const PRODUCT_ID = () => env('WHOP_PRODUCT_ID') || 'prod_7mnP69v1ROknT';
 export const diag = { last: '' };
 const note = async (step, res) => {
   let code = '';
-  try { const j = await res.clone().json(); code = j.error || j.code || j.error_code || ''; } catch { /* corps non JSON */ }
+  try {
+    const j = await res.clone().json();
+    code = j.error || j.code || j.error_code || '';
+    if (/required/i.test(j.error_description || '')) code += '-manquant';
+    else if (/invalid/i.test(j.error_description || '')) code += '-faux';
+  } catch { /* corps non JSON */ }
   diag.last = `${step}-${res.status}${code ? '-' + code : ''}`.replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 60);
   console.error('Whop', diag.last, await res.text().catch(() => ''));
 };
