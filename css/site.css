@@ -179,3 +179,15 @@ summary::after{font-weight:300}
 .foot span:first-child{font-weight:500}
 .bento article:last-child{grid-column:span 2}
 @media(max-width:960px){.bento article:last-child{grid-column:auto}}
+/* Police : Geist pour toute la landing */
+:where(body),.lead,.btn,.chip,article p{font-family:Geist,Inter,system-ui,sans-serif}
+h1,h2,h3,.stats b,.amt,.mock-bal,.how li::before,.brand{font-family:Geist,Inter,system-ui,sans-serif}
+h1{font-weight:600;letter-spacing:-.055em;font-size:clamp(50px,7.4vw,100px);line-height:.95}
+h2{font-weight:600;letter-spacing:-.045em;font-size:clamp(36px,4.8vw,60px);line-height:1.02}
+.grad{font-style:normal;font-weight:600}
+.stats b{font-weight:500;font-size:30px;letter-spacing:-.04em}
+.amt{font-weight:500;letter-spacing:-.05em;font-size:58px}
+.mock-bal{font-weight:600;letter-spacing:-.05em}
+.how li::before{font-weight:500;font-size:44px;letter-spacing:-.04em}
+h1{font-size:clamp(44px,6vw,84px)}
+.stats b{letter-spacing:-.03em}

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Nanobank Simulator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;background:#000;color:#ddd;overflow:hidden;font-family:Inter,system-ui,sans-serif}
@@ -435,6 +435,18 @@ h1,:where(#home) h2{font-family:'Instrument Serif',Georgia,serif;font-weight:400
 :where(#home) .foot span:first-child{font-weight:500}
 :where(#home) .bento article:last-child{grid-column:span 2}
 @media(max-width:960px){:where(#home) .bento article:last-child{grid-column:auto}}
+:where(#home) /* Police : Geist pour toute la landing */
+:where(body),:where(#home) .lead,:where(#home) .btn,:where(#home) .chip,:where(#home) article p{font-family:Geist,Inter,system-ui,sans-serif}
+:where(#home) h1,:where(#home) h2,:where(#home) h3,:where(#home) .stats b,:where(#home) .amt,:where(#home) .mock-bal,:where(#home) .how li::before,:where(#home) .brand{font-family:Geist,Inter,system-ui,sans-serif}
+:where(#home) h1{font-weight:600;letter-spacing:-.055em;font-size:clamp(50px,7.4vw,100px);line-height:.95}
+:where(#home) h2{font-weight:600;letter-spacing:-.045em;font-size:clamp(36px,4.8vw,60px);line-height:1.02}
+:where(#home) .grad{font-style:normal;font-weight:600}
+:where(#home) .stats b{font-weight:500;font-size:30px;letter-spacing:-.04em}
+:where(#home) .amt{font-weight:500;letter-spacing:-.05em;font-size:58px}
+:where(#home) .mock-bal{font-weight:600;letter-spacing:-.05em}
+:where(#home) .how li::before{font-weight:500;font-size:44px;letter-spacing:-.04em}
+:where(#home) h1{font-size:clamp(44px,6vw,84px)}
+:where(#home) .stats b{letter-spacing:-.03em}
 
 
 
