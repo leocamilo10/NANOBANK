@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>PropDash Lecteur</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -12,11 +12,11 @@
 <body>
 <div id="stage" class="stage"></div>
 <div id="wm">PropDash · simulateur fictif</div>
-<button id="open" title="Réglages (Maj+H)">⚙</button>
+<button id="open" title="Personnaliser (Maj+H)"><span>⚙</span><b>Personnaliser</b></button>
 <div id="gate" hidden><button>▶</button></div>
 
 <aside id="panel">
-  <div class="p-head"><a href="index.html" class="logo">◧ PropDash</a><button id="close" title="Masquer (Maj+H)">×</button></div>
+  <div class="p-head"><a href="index.html" class="logo"><svg width="22" height="22" viewBox="0 0 48 48" style="vertical-align:-5px;margin-right:8px"><rect width="48" height="48" rx="13" fill="#f3efe7"/><path d="M14 35V15l19 19V15" fill="none" stroke="#0b0b0c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 6l1.5 4.5L44 12l-4.5 1.5L38 18l-1.5-4.5L32 12l4.5-1.5z" fill="#b89a6a"/></svg>Nanobank</a><button id="close" title="Masquer (Maj+H)">×</button></div>
   <label class="fld">Écran<select id="tpl"></select></label>
   <form id="form" onsubmit="return false"></form>
   <label class="chk"><input type="checkbox" id="snd" checked> Effets sonores</label>

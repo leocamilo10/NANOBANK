@@ -1,16 +1,14 @@
-// Aperçu de l'appli : rendu en 420×860 puis réduit à la taille du cadre
-const scale = () => document.querySelectorAll('.hero-shot').forEach(b => {
-  const f = b.querySelector('iframe, .mini'); if (f) f.style.transform = `scale(${b.clientWidth / 420})`;
-});
-new ResizeObserver(scale).observe(document.body); scale();
-
-// Reflet de lumière qui suit la souris sur les panneaux en verre
+// Reflet de lumière qui suit la souris, uniquement sur le panneau survolé
+let raf = 0, last = null;
 addEventListener('pointermove', e => {
-  document.querySelectorAll('.glass').forEach(g => {
+  last = e;
+  if (raf) return;
+  raf = requestAnimationFrame(() => {
+    raf = 0;
+    const g = last.target.closest?.('.glass');
+    if (!g) return;
     const r = g.getBoundingClientRect();
-    g.style.setProperty('--mx', `${e.clientX - r.left}px`);
-    g.style.setProperty('--my', `${e.clientY - r.top}px`);
+    g.style.setProperty('--mx', `${last.clientX - r.left}px`);
+    g.style.setProperty('--my', `${last.clientY - r.top}px`);
   });
 }, { passive: true });
-
-document.querySelectorAll('[data-soon]').forEach(a => a.onclick = e => { e.preventDefault(); alert('Paiement bientôt disponible !'); });

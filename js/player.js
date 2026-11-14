@@ -103,4 +103,4 @@ if (play && !embed) {
 }
 
 readCfg(); buildPanel(); mount(); syncPhoneBtn();
-if (params.get('phone') === '1' && tpl.phone) document.body.classList.add('phone-mode', 'nopanel');
+if (tpl.phone && (params.get('phone') === '1' || matchMedia('(max-width: 700px)').matches)) document.body.classList.add('phone-mode', 'nopanel');

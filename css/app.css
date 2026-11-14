@@ -56,3 +56,33 @@ a.lock-ghost{display:block;text-decoration:none;color:#f3efe7;border-color:#3a3a
 a.lock-ghost:hover{border-color:#6a6a6a}
 .lock-err{width:100%;margin:-8px 0 18px;padding:12px 14px;border-radius:12px;background:rgba(255,90,90,.08);border:1px solid rgba(255,90,90,.3);color:#ffb4b4;font-size:14px;line-height:1.5}
 .p-logout{display:inline-block;margin-top:10px;color:#9aa0aa;font-size:12px}
+
+/* ===================== Nouvelle DA du panneau (noir, ivoire, champagne) ===================== */
+#panel{background:#0b0b0c;border-left:1px solid #1d1d1f;font-family:Geist,Inter,system-ui,sans-serif;color:#cfcac0}
+.logo{font-family:Geist,Inter,sans-serif;font-weight:600;color:#f3efe7}
+.fld{color:#8f8a80}
+.fld input,.fld select,.fld textarea{background:#141416;border-color:#26262a;border-radius:10px}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:2px solid #c9ad7f;border-color:transparent}
+.fld input[type=range],.chk input{accent-color:#c9ad7f}
+.btns button{background:#141416;border-color:#26262a;border-radius:10px;font-family:Geist,Inter,sans-serif}
+.btns button:hover{background:#1c1c1f}
+.btns .pri{background:#f3efe7;border-color:#f3efe7;color:#0b0b0c}
+.btns .acc{background:transparent;border-color:#3a3a3e;color:#f3efe7}
+.btns .acc2{background:#c9ad7f;border-color:#c9ad7f;color:#0b0b0c}
+h5{color:#6f6b63}dt{color:#f3efe7}dd,.note{color:#7a766d}
+#open{display:flex;align-items:center;justify-content:center;gap:6px;width:auto;height:36px;padding:0 12px;border-radius:18px;background:rgba(20,20,22,.7);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.14);font:600 12px Geist,Inter,sans-serif;opacity:.55}
+#open b{font-weight:600}
+
+/* ===================== Téléphone ===================== */
+@media (max-width:700px){
+  /* panneau en « tiroir » qui monte du bas */
+  #panel{top:auto;left:0;right:0;bottom:0;width:100%;height:86vh;height:86dvh;border-left:0;border-top:1px solid #26262a;border-radius:22px 22px 0 0;padding:14px 18px calc(24px + env(safe-area-inset-bottom));box-shadow:0 -20px 60px rgba(0,0,0,.6);transform:translateY(0)}
+  body.nopanel #panel{transform:translateY(105%)}
+  #panel::before{content:'';display:block;width:40px;height:4px;border-radius:2px;background:#3a3a3e;margin:0 auto 12px}
+  .btns{grid-template-columns:1fr}
+  .btns button{padding:13px 12px;font-size:14px}
+  dl,h5[data-k],.btns #fs{display:none}
+  #open{top:auto;bottom:calc(92px + env(safe-area-inset-bottom));right:10px;height:34px;opacity:.5}
+  body.phone-mode #open{top:auto;bottom:calc(92px + env(safe-area-inset-bottom));right:10px;width:auto;height:34px;font-size:12px;opacity:.5}
+  #open b{display:inline}
+}

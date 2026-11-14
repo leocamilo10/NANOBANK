@@ -17,15 +17,17 @@ js.append(strip_imports(read('js/player.js')))
 
 # Page d'accueil : on garde le contenu de index.html, sans nav externe ni iframes
 page = read('index.html')
-home = page[page.index('<nav'):page.index('<script')]
+home = page[page.index('<nav'):page.index('<script type="module"')]
 home = home.replace('href="app.html#t=bank"', 'href="#" data-open="bank"').replace('href="app.html"', 'href="#" data-open="bank"')
 home = re.sub(r'<div class="hero-shot">.*?</div>', '<div class="hero-shot"><div class="mini" id="heroMini"></div></div>', home, flags=re.S)
 
+js.append(read('js/anim.js'))
 js.append(r'''
 // ---- Accueil intégré ----
 const home = document.getElementById('home');
 home.addEventListener('pointermove', e => {
-  home.querySelectorAll('.glass').forEach(g => { const r = g.getBoundingClientRect(); g.style.setProperty('--mx', `${e.clientX - r.left}px`); g.style.setProperty('--my', `${e.clientY - r.top}px`); });
+  const g = e.target.closest?.('.glass'); if (!g) return;
+  const r = g.getBoundingClientRect(); g.style.setProperty('--mx', `${e.clientX - r.left}px`); g.style.setProperty('--my', `${e.clientY - r.top}px`);
 }, { passive: true });
 let heroInst = null;
 function showHome(on) {
