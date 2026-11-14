@@ -32,7 +32,11 @@ export async function hasProductAccess(userId, userToken) {
     const res = await fetch(`${API}/users/${encodeURIComponent(userId)}/access/${PRODUCT_ID()}`, {
       headers: { Authorization: `Bearer ${token}`, 'Api-Version-Date': VERSION },
     });
-    if (res.ok) return (await res.json()).has_access === true;
+    if (res.ok) {
+      const j = await res.json();
+      // Acheteur (customer) ou propriétaire / équipe du produit (admin)
+      return j.has_access === true || j.access_level === 'admin';
+    }
     console.error('Whop access', res.status);
     if (res.status !== 401 && res.status !== 403) return false;
   }
