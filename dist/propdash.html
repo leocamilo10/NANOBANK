@@ -61,6 +61,10 @@ body.locked{background:#000;overflow:auto}
 .lock-btn{display:block;width:100%;padding:16px;border-radius:12px;background:#f3efe7;color:#0b0b0c;font-weight:600;text-decoration:none}
 .lock-ghost{width:100%;margin-top:10px;padding:14px;border-radius:12px;background:none;border:1px solid #2a2a2a;color:#77736a;font:500 14px Geist,Inter,sans-serif}
 .lock-back{margin-top:26px;color:#9d998f;font-size:14px;text-decoration:none}
+a.lock-ghost{display:block;text-decoration:none;color:#f3efe7;border-color:#3a3a3a}
+a.lock-ghost:hover{border-color:#6a6a6a}
+.lock-err{width:100%;margin:-8px 0 18px;padding:12px 14px;border-radius:12px;background:rgba(255,90,90,.08);border:1px solid rgba(255,90,90,.3);color:#ffb4b4;font-size:14px;line-height:1.5}
+.p-logout{display:inline-block;margin-top:10px;color:#9aa0aa;font-size:12px}
 
 /* ---------- Surimpression commune ---------- */
 .ov{position:absolute;inset:0;display:none;place-items:center;z-index:20;pointer-events:none;background:rgba(0,0,0,.45)}
@@ -496,6 +500,7 @@ h1,:where(#home) h2{font-family:'Instrument Serif',Georgia,serif;font-weight:400
   <h5>Raccourcis</h5>
   <dl id="keys"></dl>
   <p class="note">Toutes les marques, données et chiffres affichés sont fictifs. Usage : divertissement et contenu créatif.</p>
+  <a class="p-logout" href="/auth/logout">Se déconnecter</a>
 </aside>
 
 <div id="home"><nav class="nav glass liquid">
@@ -1068,27 +1073,7 @@ return {
 
 })();
 const TEMPLATES = [T_bank];
-const hasAccess = async () => true;
 
-
-
-// ---- Accès réservé aux clients ----
-const SUBSCRIBE_URL = 'https://whop.com/nanobank/abonnement-nanobank-simulator';
-if (!(await hasAccess())) {
-  document.title = 'Nanobank — Accès réservé';
-  document.body.className = 'locked';
-  document.body.innerHTML = `
-    <main class="lock">
-      <svg width="56" height="56" viewBox="0 0 48 48"><rect width="48" height="48" rx="13" fill="#f3efe7"/><path d="M14 35V15l19 19V15" fill="none" stroke="#0b0b0c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 6l1.5 4.5L44 12l-4.5 1.5L38 18l-1.5-4.5L32 12l4.5-1.5z" fill="#b89a6a"/></svg>
-      <p class="lock-eyebrow">Accès réservé</p>
-      <h1>Débloque l’appli Nanobank.</h1>
-      <p class="lock-txt">Un seul paiement pour personnaliser ton compte fictif, passer en mode téléphone et faire vivre tes idées.</p>
-      <a class="lock-btn" href="${SUBSCRIBE_URL}" rel="noopener">Débloquer Nanobank — 32,90 €</a>
-      <button class="lock-ghost" disabled>J’ai déjà acheté Nanobank · connexion bientôt disponible</button>
-      <a class="lock-back" href="index.html">← Retour à l’accueil</a>
-    </main>`;
-  await new Promise(() => {}); // l'appli ne se charge pas
-}
 
 const $ = s => document.querySelector(s);
 const params = new URLSearchParams(location.hash.slice(1));
