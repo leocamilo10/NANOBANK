@@ -17,7 +17,11 @@
   <p class="lock-txt">Un seul paiement pour personnaliser ton compte fictif, passer en mode téléphone et faire vivre tes idées.</p>
   <p class="lock-err" id="err" hidden></p>
   <a class="lock-btn" href="https://whop.com/checkout/plan_6QgH0oZmZ9jft" rel="noopener">Débloquer Nanobank — 32,90 €</a>
-  <a class="lock-ghost" href="/auth/login">J’ai déjà acheté · Se connecter avec Whop</a>
+  <form class="lock-form" method="post" action="/auth/email">
+    <label for="email">Déjà acheté ? Entre l’email utilisé pour le paiement</label>
+    <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="ton@email.com" required>
+    <button type="submit">Accéder à mon appli</button>
+  </form>
   <a class="lock-back" href="index.html">← Retour à l’accueil</a>
 </main>
 <script>
@@ -25,9 +29,16 @@
     'sans-acces': 'Ce compte Whop n’a pas encore acheté Nanobank. Connecte-toi avec le compte utilisé pour l’achat, ou débloque l’appli.',
     'annule': 'Connexion annulée.',
     'session': 'La connexion a expiré, réessaie.',
-    'whop': 'Whop n’a pas répondu. Réessaie dans un instant.'
+    'whop': 'Whop n’a pas répondu. Réessaie dans un instant.',
+    'email-inconnu': 'Aucun achat trouvé avec cet email. Vérifie l’adresse utilisée lors du paiement sur Whop.',
+    'email-invalide': 'Cette adresse email n’est pas valide.'
   }[new URLSearchParams(location.search).get('erreur')];
   const d = new URLSearchParams(location.search).get('d');
+  if (new URLSearchParams(location.search).get('achat') === '1') {
+    document.querySelector('h1').textContent = 'Merci pour ton achat !';
+    document.querySelector('.lock-txt').textContent = 'Entre l’email utilisé pour le paiement pour ouvrir ton appli Nanobank.';
+    document.querySelector('.lock-btn').hidden = true;
+  }
   if (msg) { const e = document.getElementById('err'); e.textContent = msg + (d ? ' (code : ' + d.replace(/[^a-zA-Z0-9_-]/g, '') + ')' : ''); e.hidden = false; }
 </script>
 </body>
