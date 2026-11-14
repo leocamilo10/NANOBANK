@@ -191,3 +191,4 @@ h2{font-weight:600;letter-spacing:-.045em;font-size:clamp(36px,4.8vw,60px);line-
 .how li::before{font-weight:500;font-size:44px;letter-spacing:-.04em}
 h1{font-size:clamp(44px,6vw,84px)}
 .stats b{letter-spacing:-.03em}
+.foot .legal{display:flex;flex-wrap:wrap;gap:18px}.foot .legal a{color:var(--mut)}.foot .legal a:hover{color:var(--txt)}
