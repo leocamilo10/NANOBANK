@@ -101,6 +101,7 @@ export default {
     { key: 'inAmount', label: 'Virement reçu — montant', type: 'number', default: 500, step: 'any' },
     { key: 'outLabel', label: 'Paiement (Tab) — libellé', type: 'text', default: 'Restaurant Le Zinc' },
     { key: 'outAmount', label: 'Paiement — montant', type: 'number', default: 86.5, step: 'any' },
+    { key: 'layout', label: 'Format', type: 'select', default: 'auto', options: [['auto', 'Automatique (PC sur ordinateur, téléphone sur mobile)'], ['desktop', 'Ordinateur (PC)'], ['phone', 'Téléphone']] },
     { key: 'bg', label: 'Style de fond', type: 'select', default: 'aurore', options: [['aurore', 'Aurore (lumières douces)'], ['halo', 'Halo'], ['degrade', 'Dégradé vertical'], ['uni', 'Couleur unie']] },
     { key: 'color', label: 'Couleur principale', type: 'color', default: '#5b5bf7' },
     { key: 'color2', label: 'Couleur secondaire du fond', type: 'color', default: '#12a4a0' },
@@ -196,10 +197,15 @@ export default {
       </div>
       <div class="bk-simbar">Simulation · aucune valeur réelle</div>
       <nav class="bk-tabs">
+        <div class="bk-side-brand">${LOGO(30)}<b>${bankName}</b></div>
         <a data-tab="home" class="on">${ic('home')}<span>Accueil</span></a><a data-tab="tx">${ic('list')}<span>Transactions</span></a>
-        <a data-tab="card">${ic('card')}<span>Cartes</span></a><a data-tab="profile">${ic('user')}<span>Profil</span></a></nav>
+        <a data-tab="card">${ic('card')}<span>Cartes</span></a><a data-tab="profile">${ic('user')}<span>Profil</span></a>
+        <div class="bk-side-user"><i>${esc(initials)}</i><div><b>${esc(holder)}</b><small>Compte courant</small></div></div></nav>
       <div class="bk-notif"><b>${LOGO(24)}${bankName}<small>maintenant</small></b><p></p></div>
     </div></div>`);
+    // Format PC : choisi explicitement, ou automatiquement quand l'écran est large
+    const desk = cfg.layout === 'desktop' || (cfg.layout !== 'phone' && (root.clientWidth || innerWidth) >= 900);
+    v.classList.toggle('desk', desk);
     root.append(v);
     const q = s => v.querySelector(s);
     const bal = q('[data-b="main"]'), notif = q('.bk-notif'), tm = q('.bk-time'), acc = q('.bk-accounts'), dots = [...v.querySelectorAll('.bk-dots i')];

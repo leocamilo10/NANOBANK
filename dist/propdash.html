@@ -126,6 +126,8 @@ html,body{overscroll-behavior:none;touch-action:manipulation;-webkit-text-size-a
 @media (max-width:700px){
   .fld input,.fld select,.fld textarea{font-size:16px}
 }
+/* Format PC de l'appli : pas d'étiquette PropDash en double */
+body:has(.bk.desk) #wm{display:none}
 
 /* ---------- Surimpression commune ---------- */
 .ov{position:absolute;inset:0;display:none;place-items:center;z-index:20;pointer-events:none;background:rgba(0,0,0,.45)}
@@ -388,6 +390,49 @@ body.embed .bk-phone{width:100%;height:100%;box-shadow:none;border-radius:46px}
 .bk-about{padding:14px 16px}
 .bk-about b{display:block;font-size:15px;margin-bottom:6px}
 .bk-about p{color:var(--mut);font-size:13px;line-height:1.55}
+
+/* ===================== Format PC (banque en ligne sur ordinateur) ===================== */
+.bk-side-brand,.bk-side-user{display:none}
+.bk.desk{display:block;background:var(--bg)}
+.bk.desk .bk-phone{flex-direction:row;width:100%!important;max-width:none!important;height:100%!important;border-radius:0!important;box-shadow:none!important}
+.bk.desk .bk-status{display:none}
+/* Menu latéral */
+.bk.desk .bk-tabs{order:0;position:relative;width:250px;flex:none;display:flex;flex-direction:column;gap:4px;padding:26px 14px 70px;background:#0e0f14;border-right:1px solid var(--line)}
+.bk.desk .bk-side-brand{display:flex;align-items:center;gap:10px;padding:0 12px 26px;font-size:20px;font-weight:800;letter-spacing:-.02em;color:#fff}
+.bk.desk .bk-tabs a{flex-direction:row;justify-content:flex-start;gap:14px;padding:12px 14px;border-radius:12px;font-size:15px;color:#8b90a0}
+.bk.desk .bk-tabs a:hover{background:rgba(255,255,255,.04);color:#fff}
+.bk.desk .bk-tabs a.on{background:rgba(255,255,255,.08);color:#fff}
+.bk.desk .bk-side-user{display:flex;align-items:center;gap:12px;margin-top:auto;padding:14px 12px;border-top:1px solid var(--line)}
+.bk.desk .bk-side-user i{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:800;font-size:14px;background:#fff;color:var(--c)}
+.bk.desk .bk-side-user b{display:block;font-size:14px;color:#fff}.bk.desk .bk-side-user small{color:var(--mut);font-size:12px}
+.bk.desk .bk-simbar{position:absolute;left:0;bottom:0;width:250px;background:transparent;text-align:left;padding:0 26px 14px;order:0}
+/* Zone principale */
+.bk.desk .bk-views{flex:1;min-width:0}
+.bk.desk .bk-view{padding:34px max(40px,calc((100% - 1080px) / 2)) 40px!important}
+.bk.desk .bk-view[data-v="send"],.bk.desk .bk-view[data-v="amount"],.bk.desk .bk-view[data-v="sent"],.bk.desk .bk-view[data-v="detail"],.bk.desk .bk-view[data-v="card"],.bk.desk .bk-view[data-v="profile"]{padding-left:max(40px,calc((100% - 560px) / 2))!important;padding-right:max(40px,calc((100% - 560px) / 2))!important}
+.bk.desk .bk-dethero{margin:-34px -40px 14px;padding:34px 40px 22px}
+/* Accueil en tableau de bord */
+.bk.desk .bk-view[data-v="home"].on{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(300px,1fr);column-gap:24px;align-content:start}
+.bk.desk .bk-view[data-v="home"] .bk-top{grid-column:1/-1;margin-bottom:26px}
+.bk.desk .bk-top .bk-av{display:none}
+.bk.desk .bk-search{max-width:420px}
+.bk.desk .bk-accounts{grid-column:1;display:grid;grid-template-columns:1fr 1fr;gap:16px;overflow:visible;margin:0}
+.bk.desk .bk-acc{text-align:left;padding:24px!important;border-radius:22px;background:rgba(255,255,255,.1);backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
+.bk.desk .bk-bal{font-size:44px;margin:8px 0 14px}
+.bk.desk .bk-dots{display:none}
+.bk.desk .bk-actions{grid-column:1;display:flex;gap:26px;margin:24px 0 22px}
+.bk.desk .bk-insight{grid-column:2;grid-row:2/4;align-self:stretch;display:flex;flex-direction:column;justify-content:center;padding:22px 24px}
+.bk.desk .bk-view[data-v="home"] .bk-panel:last-of-type{grid-column:1/-1}
+.bk.desk .bk-glow{height:520px}
+/* Notification façon ordinateur, en haut à droite */
+.bk.desk .bk-notif{left:auto;right:28px;top:24px;width:380px}
+/* Carte et listes */
+.bk.desk .bk-cardwrap{max-width:420px;margin:6px auto 18px}
+.bk.desk .bk-chips span{cursor:pointer}
+.bk.desk li{padding:12px 6px;border-radius:12px}
+.bk.desk li:hover{background:rgba(255,255,255,.03)}
+.bk.desk .bk-tabs{order:-1}
+.bk.desk .bk-notif{top:70px}
 
 :where(#home) *{box-sizing:border-box;margin:0;padding:0}
 :where(#home){--bg:#000;--txt:#f2f3f8;--mut:#bcc0d2;--v:#5b5bf7;--p:#ff4fd8;--cy:#33d1ff;--ok:#3ddc97}
@@ -1060,6 +1105,7 @@ return {
     { key: 'inAmount', label: 'Virement reçu — montant', type: 'number', default: 500, step: 'any' },
     { key: 'outLabel', label: 'Paiement (Tab) — libellé', type: 'text', default: 'Restaurant Le Zinc' },
     { key: 'outAmount', label: 'Paiement — montant', type: 'number', default: 86.5, step: 'any' },
+    { key: 'layout', label: 'Format', type: 'select', default: 'auto', options: [['auto', 'Automatique (PC sur ordinateur, téléphone sur mobile)'], ['desktop', 'Ordinateur (PC)'], ['phone', 'Téléphone']] },
     { key: 'bg', label: 'Style de fond', type: 'select', default: 'aurore', options: [['aurore', 'Aurore (lumières douces)'], ['halo', 'Halo'], ['degrade', 'Dégradé vertical'], ['uni', 'Couleur unie']] },
     { key: 'color', label: 'Couleur principale', type: 'color', default: '#5b5bf7' },
     { key: 'color2', label: 'Couleur secondaire du fond', type: 'color', default: '#12a4a0' },
@@ -1155,10 +1201,15 @@ return {
       </div>
       <div class="bk-simbar">Simulation · aucune valeur réelle</div>
       <nav class="bk-tabs">
+        <div class="bk-side-brand">${LOGO(30)}<b>${bankName}</b></div>
         <a data-tab="home" class="on">${ic('home')}<span>Accueil</span></a><a data-tab="tx">${ic('list')}<span>Transactions</span></a>
-        <a data-tab="card">${ic('card')}<span>Cartes</span></a><a data-tab="profile">${ic('user')}<span>Profil</span></a></nav>
+        <a data-tab="card">${ic('card')}<span>Cartes</span></a><a data-tab="profile">${ic('user')}<span>Profil</span></a>
+        <div class="bk-side-user"><i>${esc(initials)}</i><div><b>${esc(holder)}</b><small>Compte courant</small></div></div></nav>
       <div class="bk-notif"><b>${LOGO(24)}${bankName}<small>maintenant</small></b><p></p></div>
     </div></div>`);
+    // Format PC : choisi explicitement, ou automatiquement quand l'écran est large
+    const desk = cfg.layout === 'desktop' || (cfg.layout !== 'phone' && (root.clientWidth || innerWidth) >= 900);
+    v.classList.toggle('desk', desk);
     root.append(v);
     const q = s => v.querySelector(s);
     const bal = q('[data-b="main"]'), notif = q('.bk-notif'), tm = q('.bk-time'), acc = q('.bk-accounts'), dots = [...v.querySelectorAll('.bk-dots i')];
