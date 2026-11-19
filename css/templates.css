@@ -362,3 +362,11 @@ body.embed .bk-phone{width:100%;height:100%;box-shadow:none;border-radius:46px}
 .bk-view[data-v="newrcpt"] .bk-cta{margin-top:auto}
 .bk-to small[data-r="iban"]{margin-top:2px;letter-spacing:.04em}
 .bk-form input[data-r="niban"]{letter-spacing:.01em;padding:14px 12px}
+/* Virement par téléphone : onglets IBAN / Téléphone */
+.bk-seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;margin:4px 0 16px;border-radius:14px;background:var(--card)}
+.bk-seg button{padding:10px;border-radius:10px;font-weight:600!important;font-size:14px!important;color:var(--mut)!important}
+.bk-seg button.on{background:#fff!important;color:#000!important}
+.bk-view[data-v="newrcpt"] .m-phone{display:none}
+.bk-view[data-v="newrcpt"][data-mode="phone"] .m-phone{display:flex}
+.bk-view[data-v="newrcpt"][data-mode="phone"] .m-iban{display:none}
+.bk-panel .bk-row.bk-newbtn{cursor:pointer}
