@@ -437,6 +437,10 @@ body.embed .bk-phone{width:100%;height:100%;box-shadow:none;border-radius:46px}
 .bk.desk .bk-bal{white-space:nowrap;font-size:clamp(28px,3.1vw,44px)}
 .bk.desk .bk-acc small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 .bk.desk .bk-acc{min-width:0}
+/* Soldes plus petits, toujours sur une seule ligne (téléphone et PC) */
+.bk-bal{white-space:nowrap;font-size:clamp(32px,9.5vw,42px);letter-spacing:-.03em}
+.bk-bal small{font-size:.5em}
+.bk.desk .bk-bal{font-size:clamp(24px,2.3vw,34px);margin:6px 0 12px}
 
 :where(#home) *{box-sizing:border-box;margin:0;padding:0}
 :where(#home){--bg:#000;--txt:#f2f3f8;--mut:#bcc0d2;--v:#5b5bf7;--p:#ff4fd8;--cy:#33d1ff;--ok:#3ddc97}
