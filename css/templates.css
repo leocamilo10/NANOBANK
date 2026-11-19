@@ -339,3 +339,13 @@ body.embed .bk-phone{width:100%;height:100%;box-shadow:none;border-radius:46px}
 .bk-view[data-v="home"] .bk-panel>*{position:relative;z-index:2}
 .bk-view[data-v="home"] .bk-panel::before{z-index:1}
 .bk-view[data-v="home"] .bk-panel::after{z-index:0}
+/* ===================== Format PC : opérations récentes toujours visibles sur l'accueil ===================== */
+.bk.desk .bk-view[data-v="home"].on{grid-template-columns:minmax(0,1.3fr) minmax(320px,1fr);grid-template-rows:auto auto auto 1fr;column-gap:24px;row-gap:0}
+.bk.desk .bk-view[data-v="home"] .bk-top{grid-column:1/-1;grid-row:1}
+.bk.desk .bk-accounts{grid-column:1;grid-row:2}
+.bk.desk .bk-actions{grid-column:1;grid-row:3}
+.bk.desk .bk-insight{grid-column:1;grid-row:4;align-self:start;justify-content:flex-start}
+.bk.desk .bk-view[data-v="home"] .bk-panel:last-of-type{grid-column:2;grid-row:2/5;align-self:start;margin-bottom:0}
+.bk.desk .bk-view[data-v="home"] .bk-panel:last-of-type li{padding:10px 4px}
+/* Même police partout dans l'appli, opérations comprises */
+.bk li,.bk li b,.bk li small,.bk li>span,.bk-ph,.bk-ph b,.bk-ph a{font-family:Inter,system-ui,sans-serif!important;font-variant-numeric:tabular-nums}

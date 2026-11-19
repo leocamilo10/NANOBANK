@@ -247,7 +247,7 @@ export default {
     const row = (t, i, isNew) => `<li data-i="${i}" class="${isNew ? 'new' : ''}">${icon(t)}<div><b>${esc(t.label)}</b><small>${esc(t.date)}${t.date ? ' · ' : ''}${t.time}</small></div><span class="${t.amount > 0 ? 'pos' : ''}">${money(t.amount, true)}</span></li>`;
 
     function renderLists(newFirst = false) {
-      q('[data-l="recent"]').innerHTML = txs.slice(0, 4).map((t, i) => row(t, i, newFirst && i === 0)).join('');
+      q('[data-l="recent"]').innerHTML = txs.slice(0, desk ? 6 : 4).map((t, i) => row(t, i, newFirst && i === 0)).join('');
       const groups = [];
       txs.forEach((t, i) => { const g = groups.find(g => g.d === t.date); g ? g.items.push([t, i]) : groups.push({ d: t.date, items: [[t, i]] }); });
       q('[data-l="all"]').innerHTML = groups.map(g => {
