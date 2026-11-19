@@ -302,3 +302,7 @@ body.embed .bk-phone{width:100%;height:100%;box-shadow:none;border-radius:46px}
 .bk.desk li:hover{background:rgba(255,255,255,.03)}
 .bk.desk .bk-tabs{order:-1}
 .bk.desk .bk-notif{top:70px}
+/* Format PC : le solde reste sur une seule ligne, même avec le panneau de réglages ouvert */
+.bk.desk .bk-bal{white-space:nowrap;font-size:clamp(28px,3.1vw,44px)}
+.bk.desk .bk-acc small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.bk.desk .bk-acc{min-width:0}
