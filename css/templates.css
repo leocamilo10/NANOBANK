@@ -349,3 +349,16 @@ body.embed .bk-phone{width:100%;height:100%;box-shadow:none;border-radius:46px}
 .bk.desk .bk-view[data-v="home"] .bk-panel:last-of-type li{padding:10px 4px}
 /* Même police partout dans l'appli, opérations comprises */
 .bk li,.bk li b,.bk li small,.bk li>span,.bk-ph,.bk-ph b,.bk-ph a{font-family:Inter,system-ui,sans-serif!important;font-variant-numeric:tabular-nums}
+/* Formulaire « Nouveau bénéficiaire » */
+.bk-newbtn{cursor:pointer}
+.bk-view[data-v="newrcpt"].on{display:flex;flex-direction:column}
+.bk-form{display:flex;flex-direction:column;gap:14px;margin:6px 0 18px}
+.bk-form label{display:flex;flex-direction:column;gap:7px;font-size:13px;font-weight:600;color:var(--mut)}
+.bk-form em{font-style:normal;font-weight:400}
+.bk-form input{width:100%;padding:14px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:#fff;font:500 16px Inter,system-ui,sans-serif;letter-spacing:.02em;outline:none;user-select:text}
+.bk-form input:focus{border-color:var(--c)}
+.bk-form input[data-r="niban"]{font-variant-numeric:tabular-nums;letter-spacing:.06em}
+.bk-formerr{min-height:18px;color:#ff8a8a;font-size:13px}
+.bk-view[data-v="newrcpt"] .bk-cta{margin-top:auto}
+.bk-to small[data-r="iban"]{margin-top:2px;letter-spacing:.04em}
+.bk-form input[data-r="niban"]{letter-spacing:.01em;padding:14px 12px}

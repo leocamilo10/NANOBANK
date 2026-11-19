@@ -152,12 +152,23 @@ export default {
           <div class="bk-search dark">${ic('search')}Nom, IBAN ou téléphone</div>
           <div class="bk-ph"><b>Bénéficiaires</b></div>
           <ul class="bk-panel" data-l="contacts"></ul>
-          <div class="bk-panel"><div class="bk-row"><i class="bk-ic sm">${ic('plus')}</i><div><b>Nouveau bénéficiaire</b><small>Ajouter un IBAN</small></div>${ic('chev', 'mut')}</div></div>
+          <div class="bk-panel bk-newbtn" data-go="newrcpt"><div class="bk-row"><i class="bk-ic sm">${ic('plus')}</i><div><b>Nouveau bénéficiaire</b><small>Saisir un nom et un IBAN</small></div>${ic('chev', 'mut')}</div></div>
+        </section>
+
+        <section class="bk-view" data-v="newrcpt">
+          <div class="bk-head"><button data-back>${ic('back')}</button><b>Nouveau bénéficiaire</b><span></span></div>
+          <div class="bk-form">
+            <label>Nom du bénéficiaire<input data-r="nname" type="text" autocomplete="off" maxlength="40" placeholder="Prénom Nom"></label>
+            <label>IBAN<input data-r="niban" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="42" placeholder="FR76 1234 5678 9012 3456 7890 123"></label>
+            <label><span>BIC <em>(facultatif)</em></span><input data-r="nbic" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="11" placeholder="ABCDFRPP"></label>
+            <p class="bk-formerr" data-r="nerr"></p>
+          </div>
+          <button class="bk-cta" data-r="ngo" disabled>Continuer</button>
         </section>
 
         <section class="bk-view bk-amountv" data-v="amount">
           <div class="bk-head"><button data-back>${ic('back')}</button><b>Montant</b><span></span></div>
-          <div class="bk-to"><i class="bk-ic" data-r="av"></i><div><small>Envoyer à</small><b data-r="name"></b></div></div>
+          <div class="bk-to"><i class="bk-ic" data-r="av"></i><div><small>Envoyer à</small><b data-r="name"></b><small data-r="iban"></small></div></div>
           <div class="bk-amt"><span data-r="amt">0</span><small>${esc(cur)}</small></div>
           <div class="bk-avail" data-r="avail"></div>
           <div class="bk-motif">${ic('doc')}<input data-r="note" placeholder="Ajouter un motif" maxlength="40"></div>
@@ -170,7 +181,7 @@ export default {
           <h2>Virement envoyé</h2>
           <div class="bk-sentamt" data-r="samt"></div>
           <p data-r="sto"></p>
-          <div class="bk-panel"><div class="bk-kv"><span>Depuis</span><b>Compte courant</b></div><div class="bk-kv"><span>Délai</span><b>Instantané</b></div><div class="bk-kv"><span>Motif</span><b data-r="snote"></b></div></div>
+          <div class="bk-panel"><div class="bk-kv"><span>Depuis</span><b>Compte courant</b></div><div class="bk-kv"><span>Délai</span><b>Instantané</b></div><div class="bk-kv" data-r="sibanrow" hidden><span>IBAN</span><b data-r="siban"></b></div><div class="bk-kv"><span>Motif</span><b data-r="snote"></b></div></div>
           <button class="bk-cta" data-tab="home">Terminé</button>
         </section>
 
@@ -228,7 +239,31 @@ export default {
       else { if (/,\d\d$/.test(amt) || amt.replace(',', '').length >= 8) return; amt = amt === '0' ? k : amt + k; }
       renderAmount();
     }
+    let rcptIban = '';
+    const ibanClean = s => String(s || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+    const ibanFormat = s => ibanClean(s).replace(/(.{4})/g, '$1 ').trim();
+    const ibanMask = s => { const c = ibanClean(s); return c.length > 8 ? `${c.slice(0, 4)} •••• •••• ${c.slice(-4)}` : c; };
+    const ibanOk = s => /^[A-Z]{2}[0-9]{2}[A-Z0-9]{11,30}$/.test(ibanClean(s));
+    function checkNew() {
+      const name = q('[data-r="nname"]').value.trim(), iban = q('[data-r="niban"]').value;
+      const err = iban && ibanClean(iban).length >= 4 && !/^[A-Z]{2}[0-9]{2}/.test(ibanClean(iban)) ? 'Un IBAN commence par 2 lettres puis 2 chiffres (ex. FR76…).' : '';
+      q('[data-r="nerr"]').textContent = err;
+      q('[data-r="ngo"]').disabled = !(name.length >= 2 && ibanOk(iban));
+    }
+    function useNew() {
+      const name = q('[data-r="nname"]').value.trim(), iban = q('[data-r="niban"]').value;
+      if (!(name.length >= 2 && ibanOk(iban))) return;
+      startAmount(name, ibanClean(iban));
+    }
+    function startAmount(name, iban) {
+      rcpt = name; rcptIban = iban || ''; amt = '';
+      q('[data-r="av"]').outerHTML = avatar(rcpt).replace('class="bk-ic"', 'class="bk-ic" data-r="av"');
+      q('[data-r="name"]').textContent = rcpt; q('[data-r="note"]').value = '';
+      q('[data-r="iban"]').textContent = rcptIban ? ibanMask(rcptIban) : '';
+      renderAmount(); go('amount');
+    }
     function pickRcpt(i) {
+      return startAmount(contacts[i], '');
       rcpt = contacts[i]; amt = '';
       q('[data-r="av"]').outerHTML = avatar(rcpt).replace('class="bk-ic"', 'class="bk-ic" data-r="av"');
       q('[data-r="name"]').textContent = rcpt; q('[data-r="note"]').value = '';
@@ -241,6 +276,7 @@ export default {
       q('[data-r="samt"]').textContent = money(a);
       q('[data-r="sto"]').textContent = `à ${rcpt}`;
       q('[data-r="snote"]').textContent = note || '—';
+      q('[data-r="sibanrow"]').hidden = !rcptIban; q('[data-r="siban"]').textContent = rcptIban ? ibanMask(rcptIban) : '';
       stack = ['home', 'sent']; show('sent');
       beep(988, .1, .05); S.after(110, () => beep(1318, .25, .05));
     }
@@ -287,10 +323,13 @@ export default {
       v.querySelectorAll('.bk-view').forEach(s => s.classList.toggle('on', s.dataset.v === name));
       const tabFor = name === 'detail' ? (stack[stack.length - 2] || 'tx') : name;
       v.querySelectorAll('.bk-tabs a').forEach(a => a.classList.toggle('on', a.dataset.tab === tabFor));
-      v.classList.toggle('flow', ['send', 'amount', 'sent'].includes(name));
+      v.classList.toggle('flow', ['send', 'newrcpt', 'amount', 'sent'].includes(name));
       q(`[data-v="${name}"]`).scrollTop = 0;
     }
-    const go = name => { stack.push(name); show(name); };
+    const go = name => {
+      if (name === 'newrcpt') { ['nname', 'niban', 'nbic'].forEach(k => q(`[data-r="${k}"]`).value = ''); q('[data-r="nerr"]').textContent = ''; q('[data-r="ngo"]').disabled = true; }
+      stack.push(name); show(name);
+    };
     const back = () => { if (stack.length > 1) stack.pop(); show(stack[stack.length - 1]); };
     const setFrozen = on => {
       q('.bk-card').classList.toggle('frozen', on);
@@ -306,6 +345,7 @@ export default {
       const c = e.target.closest('li[data-c]'); if (c) return pickRcpt(+c.dataset.c);
       const k = e.target.closest('[data-k]'); if (k) return key(k.dataset.k);
       if (e.target.closest('[data-r="send"]')) return sendIt();
+      if (e.target.closest('[data-r="ngo"]')) return useNew();
       const li = e.target.closest('li[data-i]'); if (li) return detail(+li.dataset.i);
       if (e.target.closest('[data-back]')) return back();
       const sw = e.target.closest('[data-sw]');
@@ -317,6 +357,13 @@ export default {
       const d = e.target.closest('.bk-dots i'); if (d) acc.scrollTo({ left: dots.indexOf(d) * acc.clientWidth, behavior: 'smooth' });
     };
     v.addEventListener('click', onClick);
+    const onInput = e => {
+      if (e.target.matches('[data-r="niban"]')) { const pos = e.target.value.length; e.target.value = ibanFormat(e.target.value); if (pos >= e.target.value.length - 1) e.target.selectionStart = e.target.selectionEnd = e.target.value.length; }
+      if (e.target.matches('[data-r="nbic"]')) e.target.value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+      if (e.target.closest('[data-v="newrcpt"]')) checkNew();
+    };
+    v.addEventListener('input', onInput);
+    S.add(() => v.removeEventListener('input', onInput));
     const onScroll = () => { const k = Math.round(acc.scrollLeft / Math.max(1, acc.clientWidth)); dots.forEach((d, j) => d.classList.toggle('on', j === k)); };
     acc.addEventListener('scroll', onScroll, { passive: true });
     S.add(() => { v.removeEventListener('click', onClick); acc.removeEventListener('scroll', onScroll); });
