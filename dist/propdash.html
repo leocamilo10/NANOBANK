@@ -1245,7 +1245,7 @@ return {
           <h2>Virement envoyé</h2>
           <div class="bk-sentamt" data-r="samt"></div>
           <p data-r="sto"></p>
-          <div class="bk-panel"><div class="bk-kv"><span>Depuis</span><b>Compte courant</b></div><div class="bk-kv"><span>Délai</span><b>Instantané</b></div><div class="bk-kv" data-r="sibanrow" hidden><span>IBAN</span><b data-r="siban"></b></div><div class="bk-kv"><span>Motif</span><b data-r="snote"></b></div></div>
+          <div class="bk-panel"><div class="bk-kv"><span>Depuis</span><b>Compte courant</b></div><div class="bk-kv"><span>Délai</span><b>Reçu sous 24 h</b></div><div class="bk-kv" data-r="sibanrow" hidden><span>IBAN</span><b data-r="siban"></b></div><div class="bk-kv"><span>Motif</span><b data-r="snote"></b></div></div>
           <button class="bk-cta" data-tab="home">Terminé</button>
         </section>
 
@@ -1288,7 +1288,7 @@ return {
     let txs, target, shown, stack = ['home'], rcpt = '', amt = '';
     const contacts = String(cfg.contacts || '').split('\n').map(x => x.trim()).filter(Boolean).slice(0, 12);
     const avatar = n => `<i class="bk-ic" style="--k:${['#f97316', '#22c55e', '#0ea5e9', '#a855f7', '#ec4899', '#eab308'][[...n].reduce((a, c) => a + c.charCodeAt(0), 0) % 6]}"><b>${esc(n.split(/\s+/).map(w => (w.match(/\p{L}/u) || [''])[0]).join('').slice(0, 2).toUpperCase())}</b></i>`;
-    q('[data-l="contacts"]').innerHTML = contacts.map((n, i) => `<li data-c="${i}">${avatar(n)}<div><b>${esc(n)}</b><small>Nanobank · instantané</small></div>${ic('chev', 'mut')}</li>`).join('') || '<li><div><small>Ajoutez des bénéficiaires dans le panneau</small></div></li>';
+    q('[data-l="contacts"]').innerHTML = contacts.map((n, i) => `<li data-c="${i}">${avatar(n)}<div><b>${esc(n)}</b><small>Virement reçu sous 24 h</small></div>${ic('chev', 'mut')}</li>`).join('') || '<li><div><small>Ajoutez des bénéficiaires dans le panneau</small></div></li>';
     const amountVal = () => Number(amt.replace(',', '.')) || 0;
     function renderAmount() {
       const a = amountVal(), ok = a > 0 && a <= target;
