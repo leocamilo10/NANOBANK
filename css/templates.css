@@ -370,3 +370,38 @@ body.embed .bk-phone{width:100%;height:100%;box-shadow:none;border-radius:46px}
 .bk-view[data-v="newrcpt"][data-mode="phone"] .m-phone{display:flex}
 .bk-view[data-v="newrcpt"][data-mode="phone"] .m-iban{display:none}
 .bk-panel .bk-row.bk-newbtn{cursor:pointer}
+/* ===================== Couleur de fond de l'appli ===================== */
+/* Fond sombre personnalisé : cartes et lignes s'adaptent à la teinte choisie */
+.bk:not(.light){--card:color-mix(in srgb,var(--bg) 88%,#fff 12%);--line:color-mix(in srgb,var(--bg) 80%,#fff 20%)}
+.bk .bk-tabs{background:color-mix(in srgb,var(--bg) 92%,#fff 8%)}
+.bk .bk-simbar{background:color-mix(in srgb,var(--bg) 92%,#fff 8%)}
+.bk.desk .bk-tabs{background:color-mix(in srgb,var(--bg) 94%,#fff 6%)}
+.bk-phone,.bk.desk{background:var(--bg)}
+/* Fond clair : textes foncés pour rester lisibles */
+.bk.light{--card:color-mix(in srgb,var(--bg) 92%,#000 8%);--line:color-mix(in srgb,var(--bg) 85%,#000 15%);--mut:#5d6170}
+.bk.light .bk-phone{color:#14151a}
+.bk.light .bk-tabs,.bk.light .bk-simbar{background:color-mix(in srgb,var(--bg) 96%,#000 4%)}
+.bk.light .bk-tabs a{color:#7a7f8c}.bk.light .bk-tabs a.on,.bk.light.desk .bk-tabs a.on{color:#14151a}
+.bk.light.desk .bk-tabs a.on{background:rgba(0,0,0,.07)}.bk.light.desk .bk-tabs a:hover{background:rgba(0,0,0,.04);color:#14151a}
+.bk.light.desk .bk-side-brand,.bk.light.desk .bk-side-user b{color:#14151a}
+.bk.light .bk-simbar{color:#7a7f8c}
+.bk.light .bk-chips span.on{background:#14151a!important;color:#fff!important}
+.bk.light .bk-form input{color:#14151a}
+.bk.light .bk-cta{color:#fff!important}
+.bk.light .bk-head button{color:#14151a}
+.bk.light .bk-seg button.on{background:#14151a!important;color:#fff!important}
+.bk.light .bk-legend b,.bk.light .bk-insight .bk-ph span{color:#14151a}
+.bk.light .bk-view[data-v="home"] .bk-panel{background:linear-gradient(145deg,rgba(255,255,255,.75),rgba(255,255,255,.45));box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 14px 34px rgba(0,0,0,.08)}
+.bk.light .bk-view[data-v="home"] .bk-panel::before{background:linear-gradient(140deg,rgba(255,255,255,.95),rgba(255,255,255,.2) 40%,rgba(0,0,0,.06))}
+.bk.light .bk-sw{background:#c9ccd4!important}
+.bk.light .bk-sw.on{background:var(--c)!important}
+/* Le haut de l'accueil garde ses lumières colorées : textes clairs sur la zone colorée */
+/* Fond clair : tout le texte passe en foncé, y compris le haut de l'accueil */
+.bk.light .bk-acc small{color:#3d404a}
+.bk.light .bk-actions .ico,.bk.light .bk-pill,.bk.light .bk-search{background:rgba(0,0,0,.07);color:#3d404a}
+.bk.light .bk-search{color:#6b6f7c}
+.bk.light.desk .bk-acc{background:rgba(255,255,255,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 10px 26px rgba(0,0,0,.06)}
+.bk.light .bk-ic.sm{--k:#4c505c}
+.bk.light .bk-ph a,.bk.light .bk-list a{color:color-mix(in srgb,var(--c) 75%,#000)}
+.bk.light .bk-dots i{background:rgba(0,0,0,.2)}.bk.light .bk-dots i.on{background:#14151a}
+.bk.light .bk-av{box-shadow:0 0 0 1px rgba(0,0,0,.08)}

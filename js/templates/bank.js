@@ -106,6 +106,7 @@ export default {
     { key: 'bg', label: 'Style de fond', type: 'select', default: 'aurore', options: [['aurore', 'Aurore (lumières douces)'], ['halo', 'Halo'], ['degrade', 'Dégradé vertical'], ['uni', 'Couleur unie']] },
     { key: 'color', label: 'Couleur principale', type: 'color', default: '#5b5bf7' },
     { key: 'color2', label: 'Couleur secondaire du fond', type: 'color', default: '#12a4a0' },
+    { key: 'base', label: 'Couleur de fond de l’appli', type: 'color', default: '#0b0c11' },
   ],
   mount(root, cfg) {
     const S = new Scope(), col = safeColor(cfg.color, '#5b5bf7'), cur = String(cfg.currency || '€').slice(0, 4);
@@ -119,7 +120,9 @@ export default {
     const toggle = (k, label, sub, on) => `<div class="bk-row"><i class="bk-ic sm">${ic(k)}</i><div><b>${label}</b><small>${sub}</small></div><button class="bk-sw ${on ? 'on' : ''}" data-sw="${k}"><span></span></button></div>`;
     const link = (k, label) => `<div class="bk-row"><i class="bk-ic sm">${ic(k)}</i><div><b>${label}</b></div>${ic('chev', 'mut')}</div>`;
 
-    const v = h(`<div class="bk" data-bg="${esc(cfg.bg || 'aurore')}" style="--c:${col};--c2:${safeColor(cfg.color2, '#12a4a0')}"><div class="bk-phone">
+    const base = safeColor(cfg.base, '#0b0c11');
+    const lum = (() => { const n = parseInt(base.slice(1), 16), ch = [n >> 16, (n >> 8) & 255, n & 255].map(x => { x /= 255; return x <= .03928 ? x / 12.92 : ((x + .055) / 1.055) ** 2.4; }); return .2126 * ch[0] + .7152 * ch[1] + .0722 * ch[2]; })();
+    const v = h(`<div class="bk${lum > .35 ? ' light' : ''}" data-bg="${esc(cfg.bg || 'aurore')}" style="--c:${col};--c2:${safeColor(cfg.color2, '#12a4a0')};--bg:${base}"><div class="bk-phone">
       <div class="bk-status"><span class="bk-time"></span><span class="bk-sig"><i></i><i></i><i></i><i></i> 5G <b></b></span></div>
       <div class="bk-views">
         <section class="bk-view on" data-v="home">
