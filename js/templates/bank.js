@@ -341,6 +341,8 @@ export default {
       q('[data-s="legend"]').innerHTML = arr.slice(0, 3).map(x => `<span><i style="background:${x.c.c}"></i>${x.c.n} <b>${Math.round(x.v / tot * 100)} %</b></span>`).join('');
     }
 
+    const toHHMM = s => { const [h, m] = String(s || '0:00').split(':'); return String(+h || 0).padStart(2, '0') + ':' + String(m || '00').padStart(2, '0'); };
+    const fromHHMM = s => { const [h, m] = String(s).split(':'); return `${+h}:${m}`; };
     function detail(i) {
       const t = txs[i]; if (!t) return;
       const c = catOf(t), incoming = t.amount > 0;
@@ -349,9 +351,10 @@ export default {
           <div class="bk-head"><button data-back>${ic('back')}</button><b></b><span></span></div>
           <i class="bk-ic xl" style="--k:${c.c}">${ic(c.i)}</i>
           <h3>${esc(t.label)}</h3><div class="bk-det-amt ${incoming ? 'pos' : ''}">${money(t.amount, true)}</div>
-          <small>${esc(t.date)} · ${t.time}</small></div>
-        <div class="bk-panel bk-steps"><div><i></i><b>${incoming ? 'Virement initié' : 'Paiement autorisé'}</b><small>${t.time}</small></div><div><i></i><b>Terminé</b><small>${esc(t.date)}</small></div></div>
+          <small>${esc(t.date)} · <span data-r="dtime">${t.time}</span></small></div>
+        <div class="bk-panel bk-steps"><div><i></i><b>${incoming ? 'Virement initié' : 'Paiement autorisé'}</b><small data-r="dtime">${t.time}</small></div><div><i></i><b>Terminé</b><small>${esc(t.date)}</small></div></div>
         <div class="bk-panel">
+          <label class="bk-kv bk-timerow"><span>Heure</span><input type="time" class="bk-timein" data-ti="${i}" value="${toHHMM(t.time)}"></label>
           <div class="bk-kv"><span>Catégorie</span><b><i style="background:${c.c}"></i>${c.n}</b></div>
           <div class="bk-kv"><span>Compte</span><b>Compte courant</b></div>
           <div class="bk-kv"><span>Moyen</span><b>${incoming ? 'Virement' : 'Carte •••• ' + last4}</b></div></div>
@@ -403,6 +406,9 @@ export default {
     v.addEventListener('click', onClick);
     const onInput = e => {
       if (e.target.matches('[data-r="niban"]')) { const pos = e.target.value.length; e.target.value = ibanFormat(e.target.value); if (pos >= e.target.value.length - 1) e.target.selectionStart = e.target.selectionEnd = e.target.value.length; }
+      if (e.target.matches('.bk-timein') && e.target.value) {
+        const t = txs[+e.target.dataset.ti]; if (t) { t.time = fromHHMM(e.target.value); q('[data-v="detail"]').querySelectorAll('[data-r="dtime"]').forEach(x => x.textContent = t.time); renderLists(); }
+      }
       if (e.target.matches('[data-r="nphone"]')) e.target.value = phoneFormat(e.target.value);
       if (e.target.matches('[data-r="nbic"]')) e.target.value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
       if (e.target.closest('[data-v="newrcpt"]')) checkNew();

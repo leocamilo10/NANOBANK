@@ -419,3 +419,8 @@ body.embed .bk-phone{width:100%;height:100%;box-shadow:none;border-radius:46px}
 .bk.light .bk-infobox p b{filter:none;color:#14151a}
 @keyframes infoIn{from{opacity:0;transform:translateY(-6px)}}
 .bk-kv[hidden]{display:none}
+/* Heure modifiable dans le détail d'une opération */
+.bk-timerow{cursor:pointer}
+.bk-timein{background:transparent;border:0;color:inherit;font:600 14px Inter,system-ui,sans-serif;text-align:right;padding:0;min-width:80px;outline:none;color-scheme:dark;cursor:pointer;user-select:text}
+.bk.light .bk-timein{color-scheme:light}
+.bk-timein::-webkit-calendar-picker-indicator{opacity:.6;cursor:pointer}
