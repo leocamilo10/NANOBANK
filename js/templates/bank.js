@@ -36,6 +36,7 @@ const P = {
   help: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.7M12 17h.01',
   doc: 'M6 3h9l4 4v14H6zM14 3v5h5M9 13h7M9 17h5',
   check: 'M5 12l5 5 9-10',
+  info: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 11v6M12 7.5h.01',
   phone: 'M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2',
   del: 'M9 6h11v12H9l-6-6zM12 10l4 4M16 10l-4 4',
   piggy: 'M5 11a6 6 0 0 1 6-5h3a6 6 0 0 1 6 6v1l1 1v3h-2l-1 3h-3v-2h-4v2H8l-1-3a5 5 0 0 1-2-4M15 10h.01',
@@ -188,6 +189,8 @@ export default {
           <div class="bk-sentamt" data-r="samt"></div>
           <p data-r="sto"></p>
           <div class="bk-panel"><div class="bk-kv"><span>Depuis</span><b>Compte courant</b></div><div class="bk-kv"><span>Délai</span><b>Reçu sous 24 h</b></div><div class="bk-kv" data-r="sibanrow" hidden><span data-r="sibanlbl">IBAN</span><b data-r="siban"></b></div><div class="bk-kv"><span>Motif</span><b data-r="snote"></b></div></div>
+          <button class="bk-infobtn" data-r="sinfo" aria-expanded="false">${ic('info')}<span>Infos sur le délai</span>${ic('down', 'chev-i')}</button>
+          <div class="bk-infobox" data-r="sinfobox" hidden><b>Délai de réception</b><p data-r="sinfotxt"></p></div>
           <button class="bk-cta" data-tab="home">Terminé</button>
         </section>
 
@@ -310,6 +313,9 @@ export default {
       q('[data-r="samt"]').textContent = money(a);
       q('[data-r="sto"]').textContent = `à ${rcpt}`;
       q('[data-r="snote"]').textContent = note || '—';
+      const lendemain = new Date(Date.now() + 86400000).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
+      q('[data-r="sinfotxt"]').innerHTML = `Les fonds seront disponibles sur le compte du bénéficiaire sous 24 heures, et <b>au plus tard le ${esc(lendemain)} avant 12 h</b>.`;
+      q('[data-r="sinfobox"]').hidden = true; q('[data-r="sinfo"]').setAttribute('aria-expanded', 'false');
       q('[data-r="sibanrow"]').hidden = !rcptIban; q('[data-r="siban"]').textContent = rcptIban ? (rcptKind === 'phone' ? phoneMask(rcptIban) : ibanMask(rcptIban)) : ''; q('[data-r="sibanlbl"]').textContent = rcptKind === 'phone' ? 'Téléphone' : 'IBAN';
       stack = ['home', 'sent']; show('sent');
       beep(988, .1, .05); S.after(110, () => beep(1318, .25, .05));
@@ -384,6 +390,8 @@ export default {
       const sg = e.target.closest('.bk-seg button'); if (sg) return setMode(sg.dataset.mode);
       const li = e.target.closest('li[data-i]'); if (li) return detail(+li.dataset.i);
       if (e.target.closest('[data-back]')) return back();
+      const ib = e.target.closest('[data-r="sinfo"]');
+      if (ib) { const box = q('[data-r="sinfobox"]'); box.hidden = !box.hidden; ib.setAttribute('aria-expanded', String(!box.hidden)); return; }
       const sw = e.target.closest('[data-sw]');
       if (sw) { if (sw.dataset.sw === 'snow') setFrozen(!sw.classList.contains('on')); else sw.classList.toggle('on'); return; }
       if (e.target.closest('[data-sw-proxy]')) return setFrozen(!q('.bk-card').classList.contains('frozen'));
